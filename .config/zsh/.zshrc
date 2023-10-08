@@ -17,23 +17,6 @@ alias gdf='git status -s | sed -E "/(^\?\?)|(^M )/d" | awk "{ print \$2 }" | fzf
 clear-history 2> /dev/null
 trap 'clear-history 2> /dev/null' EXIT
 
-# Enable vi mode
-bindkey -v
-export KEYTIMEOUT=1
-
-# Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'left' vi-backward-char
-bindkey -M menuselect 'down' vi-down-line-or-history
-bindkey -M menuselect 'up' vi-up-line-or-history
-bindkey -M menuselect 'right' vi-forward-char
-
-# Fix backspace bug when switching modes
-bindkey "^?" backward-delete-char
-
 # ci", ci', ci`, di", etc
 autoload -U select-quoted
 zle -N select-quoted
@@ -51,25 +34,5 @@ for m in visual viopp; do
     bindkey -M $m $c select-bracketed
   done
 done
-
-# Set cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[1 q'
-  fi
-}
-zle -N zle-keymap-select
-
-# Use block cursor shape for each new prompt
-_fix_cursor() {
-  echo -ne '\e[1 q'
-}
-precmd_functions+=(_fix_cursor)
 
 colorscript --random
