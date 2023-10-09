@@ -411,6 +411,8 @@
 (add-hook 'org-agenda-finalize-hook #'beginning-of-buffer)
 (add-hook 'org-agenda-finalize-hook #'org-agenda-goto-today)
 
+(setq test_var 150)
+
 (when (string= system-name "archlinux")
   (load-file (expand-file-name "~/git_repos/dotfiles/.config/.emacs_archlinux")))
 
