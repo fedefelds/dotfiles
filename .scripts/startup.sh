@@ -20,3 +20,4 @@ fi
 #hyprctl dispatch exec '[workspace 5 silent] /opt/FreeTube/freetube --ozone-platform-hint=wayland'
 #hyprctl dispatch exec '[workspace 7 silent] virt-manager'
 #hyprctl dispatch exec '[workspace 8 silent] thunderbird'
+ hyprctl dispatch exec '[workspace 9 silent] emacsclient --no-wait --create-frame --frame-parameters='\''(quote (name . "org-gtd"))'\'''
