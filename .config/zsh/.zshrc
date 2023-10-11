@@ -13,6 +13,10 @@ alias bat="bat -p --theme gruvbox-dark"
 alias gd="git diff --patch --stat"
 alias gdf='git status -s | sed -E "/(^\?\?)|(^M )/d" | awk "{ print \$2 }" | fzf --preview "bat -p --color always -l diff <(git diff --patch --stat {})"'
 
+alias e='emacsclient -t'
+alias ec="nohup emacsclient -c --no-wait > /dev/null 2>&1"
+alias er='systemctl --user restart emacs'
+
 # Clear history on start and exit
 clear-history 2> /dev/null
 trap 'clear-history 2> /dev/null' EXIT
