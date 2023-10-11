@@ -14,9 +14,9 @@ if ! pgrep kabmat > /dev/null; then
   hyprctl dispatch togglespecialworkspace
 fi
 
-hyprctl dispatch exec '[workspace 1 silent] kitty'
-hyprctl dispatch exec '[workspace 2 silent] kitty'
-hyprctl dispatch exec '[workspace 3 silent] firefox'
-hyprctl dispatch exec '[workspace 5 silent] /opt/FreeTube/freetube --ozone-platform-hint=wayland'
-hyprctl dispatch exec '[workspace 7 silent] virt-manager'
-hyprctl dispatch exec '[workspace 8 silent] thunderbird'
+#hyprctl dispatch exec '[workspace 1 silent] kitty'
+#hyprctl dispatch exec '[workspace 2 silent] kitty'
+#hyprctl dispatch exec '[workspace 3 silent] firefox'
+#hyprctl dispatch exec '[workspace 5 silent] /opt/FreeTube/freetube --ozone-platform-hint=wayland'
+#hyprctl dispatch exec '[workspace 7 silent] virt-manager'
+#hyprctl dispatch exec '[workspace 8 silent] thunderbird'
