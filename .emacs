@@ -236,6 +236,8 @@
 
 (setq org-log-into-drawer t)
 
+(setq org-habit-show-habits-only-for-today nil)
+
 ;; org roam
 (setq org-return-follows-link  t)
 ;;Open links in current window
