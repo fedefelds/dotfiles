@@ -135,8 +135,6 @@
 (setq org-agenda-files (list "inbox.org" "agenda.org"
                              "projects.org" "habits.org"))
 
-(setq org-agenda-span '2)
-
 ;; (defun efs/org-mode-visual-fill ()
 ;;   (setq visual-fill-column-width 100
 ;;         visual-fill-column-center-text t)
@@ -183,7 +181,8 @@
   (setq org-agenda-custom-commands
             '(("g" "Get Things Done (GTD)"
                ((agenda "Agenda"
-                        ((org-agenda-prefix-format "%t %s [%e] ")
+                        ((org-agenda-span 3)
+                         (org-agenda-prefix-format "%t %s [%e] ")
                          (org-agenda-overriding-header "AGENDA")))
                 (tags "+inbox"
                     ((org-agenda-prefix-format "%t %s")
