@@ -230,7 +230,10 @@
 (org-babel-do-load-languages
     'org-babel-load-languages
     '((python . t)
-      (latex . t)))
+      (latex . t)
+      (shell . t)
+      (awk . t)
+      ))
 
 (add-to-list 'org-modules 'org-habit t)
 
