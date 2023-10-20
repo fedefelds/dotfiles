@@ -109,11 +109,11 @@
   (setq org-startup-indented 1)
   (setq org-log-done 'time)
 
-  ;; global #+TODO: NEXT(n) TODO(t) WAITING(w) | DONE(d)
+  ;; define todo-keywords
   (setq org-todo-keywords
-        '((sequence "NEXT(n)" "TODO(t!)" "WAITING(w)" "|" "DONE(d!)" "CANC(c!)")))
+        '((sequence "NEXT(n)" "TODO(t!)" "WAITING(w)" "ONGOING(o)" "|" "DONE(d!)" "CANC(c!)")))
 
-  ;; global #+TAGS: @home(h) @work(w) @mail(m) @comp(c) @web(b)
+  ;; define org contexts
   (setq org-tag-alist '((:startgroup . nil)
                       ("@home" . ?h)
                       ("@work" . ?w)
@@ -190,6 +190,9 @@
                 (tags "@home/NEXT"
                       ((org-agenda-prefix-format "%t %s [%e] ")
                        (org-agenda-overriding-header "NEXT @home")))
+                (tags "/ONGOING"
+                      ((org-agenda-prefix-format "%t %s [%e] ")
+                       (org-agenda-overriding-header "Ongoing")))
                 (tags "@work/NEXT"
                       ((org-agenda-prefix-format "%t %s [%e] ")
                        (org-agenda-overriding-header "NEXT @work")))
