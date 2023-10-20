@@ -233,7 +233,10 @@
 (org-babel-do-load-languages
     'org-babel-load-languages
     '((python . t)
-      (latex . t)))
+      (latex . t)
+      (shell . t)
+      (awk . t)
+      ))
 
 (add-to-list 'org-modules 'org-habit t)
 
@@ -307,6 +310,7 @@
 (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
 (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
 (add-to-list 'org-structure-template-alist '("py" . "src python"))
+(add-to-list 'org-structure-template-alist '("awk" . "src awk :results output code :in-file ~/Documents/library/awk/"))
 
 (defun efs/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
