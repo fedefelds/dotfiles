@@ -328,29 +328,29 @@
 
 (use-package lsp-ivy)
 
-(use-package dap-mode
-  ;; Uncomment the config below if you want all UI panes to be hidden by default!
-  ;; :custom
-  ;; (lsp-enable-dap-auto-configure nil)
-  ;; :config
-  ;; (dap-ui-mode 1)
+;; (use-package dap-mode
+;;   ;; Uncomment the config below if you want all UI panes to be hidden by default!
+;;   ;; :custom
+;;   ;; (lsp-enable-dap-auto-configure nil)
+;;   ;; :config
+;;   ;; (dap-ui-mode 1)
 
-  :config
-  ;; Set up Node debugging
-  ;;(require 'dap-node)
-  ;;(dap-node-setup) ;; Automatically installs Node debug adapter if needed
+;;   :config
+;;   ;; Set up Node debugging
+;;   ;;(require 'dap-node)
+;;   ;;(dap-node-setup) ;; Automatically installs Node debug adapter if needed
 
-  ;; Set up Pyton debugging
-  (require 'dap-python)
-  ;; if you installed debugpy, you need to set this
-  ;; https://github.com/emacs-lsp/dap-mode/issues/306
-  (setq dap-python-debugger 'debugpy)
+;;   ;; Set up Pyton debugging
+;;   (require 'dap-python)
+;;   ;; if you installed debugpy, you need to set this
+;;   ;; https://github.com/emacs-lsp/dap-mode/issues/306
+;;   (setq dap-python-debugger 'debugpy)
 
-  ;; Bind `C-c l d` to `dap-hydra` for easy access
-  (general-define-key
-    :keymaps 'lsp-mode-map
-    :prefix lsp-keymap-prefix
-    "d" '(dap-hydra t :wk "debugger")))
+;;   ;; Bind `C-c l d` to `dap-hydra` for easy access
+;;   (general-define-key
+;;     :keymaps 'lsp-mode-map
+;;     :prefix lsp-keymap-prefix
+;;     "d" '(dap-hydra t :wk "debugger")))
 
 (use-package python-mode
   :ensure t
