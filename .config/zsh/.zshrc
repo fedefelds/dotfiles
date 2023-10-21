@@ -27,6 +27,9 @@ zle -N select-quoted
 for m in visual viopp; do
   for c in {a,i}{\',\",\`}; do
     bindkey -M $m $c select-quoted
+  alias e='emacsclient -t'
+  alias ec="nohup emacsclient -c --no-wait > /dev/null 2>&1"
+  alias er='systemctl --user restart emacs'
   done
 done
 
