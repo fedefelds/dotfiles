@@ -18,26 +18,25 @@ alias ec="nohup emacsclient -c --no-wait > /dev/null 2>&1"
 alias er='systemctl --user restart emacs'
 
 # Clear history on start and exit
+#  clear-history 2> /dev/null
+# trap 'clear-history 2> /dev/null' EXIT
 
-# ci", ci', ci`, di", etc
-autoload -U select-quoted
-zle -N select-quoted
-for m in visual viopp; do
-  for c in {a,i}{\',\",\`}; do
-    bindkey -M $m $c select-quoted
-  alias e='emacsclient -t'
-  alias ec="nohup emacsclient -c --no-wait > /dev/null 2>&1"
-  alias er='systemctl --user restart emacs'
-  done
-done
+ # ci", ci', ci`, di", etc
+ autoload -U select-quoted
+ zle -N select-quoted
+ for m in visual viopp; do
+   for c in {a,i}{\',\",\`}; do
+     bindkey -M $m $c select-quoted
+   done
+ done
 
-# ci{, ci(, ci<, di{, etc
-autoload -U select-bracketed
-zle -N select-bracketed
-for m in visual viopp; do
-  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
-    bindkey -M $m $c select-bracketed
-  done
-done
+ # ci{, ci(, ci<, di{, etc
+ autoload -U select-bracketed
+ zle -N select-bracketed
+ for m in visual viopp; do
+   for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+     bindkey -M $m $c select-bracketed
+   done
+ done
 
-colorscript --random
+ colorscript --random
