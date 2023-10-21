@@ -135,14 +135,6 @@
 (setq org-agenda-files (list "inbox.org" "agenda.org"
                              "projects.org" "habits.org"))
 
-;; (defun efs/org-mode-visual-fill ()
-;;   (setq visual-fill-column-width 100
-;;         visual-fill-column-center-text t)
-;;   (visual-fill-column-mode 1))
-
-;; (use-package visual-fill-column
-;;   :hook (org-mode . efs/org-mode-visual-fill))
-
 (setq org-capture-templates
       `(("i" "Inbox" entry (file "inbox.org")
          ,(concat "* TODO %?\n"
@@ -192,7 +184,7 @@
                        (org-agenda-overriding-header "NEXT @home")))
                 (tags "/ONGOING"
                       ((org-agenda-prefix-format "%t %s [%e] ")
-                       (org-agenda-overriding-header "Ongoing")))
+                       (org-agenda-overriding-header "ONGOING")))
                 (tags "@work/NEXT"
                       ((org-agenda-prefix-format "%t %s [%e] ")
                        (org-agenda-overriding-header "NEXT @work")))
