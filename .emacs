@@ -228,6 +228,7 @@
       (latex . t)
       (shell . t)
       (awk . t)
+      (sed . t)
       ))
 
 (add-to-list 'org-modules 'org-habit t)
@@ -303,6 +304,7 @@
 (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
 (add-to-list 'org-structure-template-alist '("py" . "src python"))
 (add-to-list 'org-structure-template-alist '("awk" . "src awk :results output code :in-file ~/Documents/library/awk/"))
+(add-to-list 'org-structure-template-alist '("sed" . "src sed :results output code :in-file ~/Documents/library/sed/"))
 
 (defun efs/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
