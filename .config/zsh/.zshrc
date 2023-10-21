@@ -6,7 +6,7 @@ plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-alias clear-history="echo ' ' > $HISTFILE && history -c"
+#  alias clear-history="echo ' ' > $HISTFILE && history -c"
 alias open="xdg-open"
 alias full_upgrade="sudo pacman -Syu && echo '\n\n\n' && yay -Syu --devel && echo '\n\n\n' && yarn global upgrade && echo '\n\n\n' && composer global update"
 alias bat="bat -p --theme gruvbox-dark"
@@ -18,8 +18,6 @@ alias ec="nohup emacsclient -c --no-wait > /dev/null 2>&1"
 alias er='systemctl --user restart emacs'
 
 # Clear history on start and exit
-clear-history 2> /dev/null
-trap 'clear-history 2> /dev/null' EXIT
 
 # ci", ci', ci`, di", etc
 autoload -U select-quoted
