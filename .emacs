@@ -138,6 +138,9 @@
 (setq org-capture-templates
       `(("i" "Inbox" entry (file "inbox.org")
          ,(concat "* TODO %?\n"
+                  ":PROPERTIES:\n"
+                  ":TRIGGER: next-sibling todo!(NEXT)\n"
+                  ":END:\n"
                   "/Entered on/ %U"))
         ("n" "Note" entry (file "notes.org")
          ,(concat "* Note (%a)\n"
@@ -244,6 +247,11 @@
     (org-clock-out nil t)))
 
 (add-hook 'org-after-todo-state-change-hook 'org-clock-todo-change)
+
+(use-package org-edna
+  :ensure t
+  :config
+  (org-edna-mode))
 
 ;; org roam
 (setq org-return-follows-link  t)
