@@ -148,7 +148,7 @@
                   "\n"
                   "%?"))
         ("j" "Journal Entry"
-       entry (file+datetree "~/Dropbox/org/journal.org")
+       entry (file+datetree "/home/fede/Documents/org/journal.org")
        "* %?"
        :empty-lines 1)))
 
