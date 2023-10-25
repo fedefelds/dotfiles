@@ -188,16 +188,16 @@
                 (tags "/ONGOING"
                       ((org-agenda-prefix-format "%t %s [%e] ")
                        (org-agenda-overriding-header "ONGOING")))
-                (tags "@work/NEXT"
+                (tags "@work-project/NEXT"
                       ((org-agenda-prefix-format "%t %s [%e] ")
                        (org-agenda-overriding-header "NEXT @work")))
-                (tags "@comp/NEXT"
+                (tags "@comp-project/NEXT"
                       ((org-agenda-prefix-format "%t %s [%e] ")
                        (org-agenda-overriding-header "NEXT @comp")))
-                (tags "@errands/NEXT"
+                (tags "@errands-project/NEXT"
                     ((org-agenda-prefix-format "%t %s [%e] ")
                      (org-agenda-overriding-header "NEXT @errands")))
-                (tags "@phone/NEXT"
+                (tags "@phone-project/NEXT"
                     ((org-agenda-prefix-format "%t %s [%e] ")
                      (org-agenda-overriding-header "NEXT @phone")))
                 (tags "project/NEXT"
