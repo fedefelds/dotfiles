@@ -149,7 +149,9 @@
                   "%?"))
         ("j" "Journal Entry"
        entry (file+datetree "/home/fede/Documents/org/journal.org")
-       "* %?")))
+       "* %?")
+        ("w" "work task" entry (file+headline "projects.org" "single tasks @work")
+         "* TODO %?\n :PROPERTIES:\n :TAGS: @work\n :END:\n /Entered on/ %U")))
 
 (defun org-capture-inbox ()
   (interactive)
