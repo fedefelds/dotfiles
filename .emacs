@@ -148,9 +148,8 @@
                   "\n"
                   "%?"))
         ("j" "Journal Entry"
-       entry (file+datetree "~/Dropbox/org/journal.org")
-       "* %?"
-       :empty-lines 1)))
+       entry (file+datetree "/home/fede/Documents/org/journal.org")
+       "* %?")))
 
 (defun org-capture-inbox ()
   (interactive)
