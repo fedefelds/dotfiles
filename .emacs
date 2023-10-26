@@ -130,27 +130,23 @@
 ;; set org-deadline-warning-days to 0
 (setq org-deadline-warning-days 0)
 
-(setq org-directory "~/Documents/org")
+(setq org-directory "~/Documents/org/roam")
 
-(setq org-agenda-files (list "inbox.org" "agenda.org"
-                             "projects.org" "habits.org"))
+(setq org-agenda-files (list "20231026232223-org_inbox.org" "20231026231716-org_agenda.org"
+                             "20231026232325-org_projects.org" "20231026232155-org_habits.org"))
 
 (setq org-capture-templates
-      `(("i" "Inbox" entry (file "inbox.org")
+      `(("i" "Inbox" entry (file "20231026232223-org_inbox.org")
          ,(concat "* TODO %?\n"
                   ":PROPERTIES:\n"
                   ":TRIGGER: next-sibling todo!(NEXT)\n"
                   ":END:\n"
                   "/Entered on/ %U"))
-        ("n" "Note" entry (file "notes.org")
-         ,(concat "* Note (%a)\n"
-                  "/Entered on/ %U\n"
-                  "\n"
-                  "%?"))
-        ("j" "Journal Entry" entry (file+datetree "/home/fede/Documents/org/journal.org")  "* %?")
-        ("w" "work task" entry (file+headline "projects.org" "single tasks @work")
+                  ("j" "Journal Entry"
+       entry (file+datetree "20231026232259-org_journal.org")
+       "* %?")
+        ("w" "work task" entry (file+headline "20231026232325-org_projects.org" "single tasks @work")
          "* TODO %?\n :PROPERTIES:\n :TAGS: @work\n :END:\n /Entered on/ %U")))
-
 
 (defun org-capture-inbox ()
   (interactive)
@@ -167,9 +163,9 @@
 (setq org-refile-use-outline-path 'file)
  (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-allow-creating-parent-nodes t)
-(setq org-refile-targets (quote (("projects.org" :maxlevel . 1)
-                                 ("agenda.org" :maxlevel . 1)
-                                 ("sdm.org" :maxlevel . 1))))
+(setq org-refile-targets (quote (("20231026232325-org_projects.org" :maxlevel . 1)
+                                 ("20231026231716-org_agenda.org" :maxlevel . 1)
+                                 ("20231026232404-org_sdm.org" :maxlevel . 1))))
 
 ;; jump to top of the agenda after parsing
 (add-hook 'org-agenda-finalize-hook #'org-agenda-goto-today)
