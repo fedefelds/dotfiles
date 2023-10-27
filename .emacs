@@ -230,6 +230,11 @@
       (sed . t)
       ))
 
+(add-hook 'org-mode-hook
+          (lambda ()
+            (when (string-match-p "\\.org\\'" (buffer-file-name))
+              (auto-revert-mode 1))))
+
 (add-to-list 'org-modules 'org-habit t)
 
 (setq org-log-into-drawer t)
