@@ -231,8 +231,8 @@
       ))
 
 (add-hook 'org-mode-hook
-          (lambda ()
-            (when (string-match-p "\\.org\\'" (buffer-file-name))
+        (lambda ()
+          (if (string-match-p ".*\\.org\\'" (or (buffer-file-name) ""))
               (auto-revert-mode 1))))
 
 (add-to-list 'org-modules 'org-habit t)
