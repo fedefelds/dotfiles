@@ -265,7 +265,10 @@
   (org-roam-directory "/home/fede/Documents/org/roam")
   (org-roam-completion-everywhere t)
   (org-roam-db-autosync-mode)
-  :bind (("C-c n t" . org-roam-buffer-toggle)
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n o" . org-id-get-create)
+         ("C-c n t" . org-roam-tag-add)
+         ("C-c n a" . org-roam-alias-add)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert))
   :config
