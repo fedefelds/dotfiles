@@ -145,8 +145,12 @@
                   ("j" "Journal Entry"
        entry (file+datetree "20231026232259-org_journal.org")
        "* %?")
-        ("w" "work task" entry (file+headline "20231026232325-org_projects.org" "single tasks @work")
-         "* TODO %?\n :PROPERTIES:\n :TAGS: @work\n :END:\n /Entered on/ %U")))
+        ("h" "@home task" entry (file+headline "20231026232325-org_projects.org" "single tasks @home")  "* TODO %?\n :PROPERTIES:\n :TAGS: @home\n :END:\n /Entered on/ %U")
+        ("w" "@work task" entry (file+headline "20231026232325-org_projects.org" "single tasks @work")  "* TODO %?\n :PROPERTIES:\n :TAGS: @work\n :END:\n /Entered on/ %U")
+        ("c" "@computer task" entry (file+headline "20231026232325-org_projects.org" "single tasks @computer")  "* TODO %?\n :PROPERTIES:\n :TAGS: @computer\n :END:\n /Entered on/ %U")
+        ("e" "@errands task" entry (file+headline "20231026232325-org_projects.org" "single tasks @errands")  "* TODO %?\n :PROPERTIES:\n :TAGS: @errands\n :END:\n /Entered on/ %U")
+        ("p" "@phone task" entry (file+headline "20231026232325-org_projects.org" "single tasks @phone")  "* TODO %?\n :PROPERTIES:\n :TAGS: @phone\n :END:\n /Entered on/ %U")
+        ))
 
 (defun org-capture-inbox ()
   (interactive)
