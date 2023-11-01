@@ -39,4 +39,4 @@ alias er='systemctl --user restart emacs'
    done
  done
 
- colorscript --random
+# colorscript --random
