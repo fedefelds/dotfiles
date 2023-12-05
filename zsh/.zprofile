@@ -20,5 +20,3 @@ export PRETTIERD_DEFAULT_CONFIG="$HOME/.config/nvim/lua/plankcipher/plugins/form
 export NODE_REPL_HISTORY=""
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
-
-Hyprland

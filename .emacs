@@ -258,6 +258,12 @@
   :config
   (org-edna-mode))
 
+(defun org-babel-tangle-file ()
+  (let ((org-confirm-babel-evaluate nil))
+    (org-babel-tangle)))
+
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'org-babel-tangle-file)))
+
 ;; org roam
 (setq org-return-follows-link  t)
 ;;Open links in current window
@@ -272,6 +278,7 @@
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n o" . org-id-get-create)
          ("C-c n t" . org-roam-tag-add)
+         ("C-c n T" . org-roam-node-find-and-tag)
          ("C-c n a" . org-roam-alias-add)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert))
@@ -318,6 +325,12 @@
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
+
+(defun org-roam-node-find-and-tag ()
+  "Run org-roam-node-find and then tag the current note."
+  (interactive)
+  (org-roam-node-find)
+  (org-roam-tag-add (completing-read-multiple "Tag: " (org-roam-tag-completions))))
 
 ;; This is needed as of Org 9.2
 (require 'org-tempo)
