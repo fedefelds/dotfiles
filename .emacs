@@ -371,6 +371,7 @@ This is intended to be used with org-redisplay-inline-images."
 (add-to-list 'org-structure-template-alist '("py" . "src python"))
 (add-to-list 'org-structure-template-alist '("awk" . "src awk :results output code :in-file ~/Documents/library/awk/"))
 (add-to-list 'org-structure-template-alist '("sed" . "src sed :results output code :in-file ~/Documents/library/sed/"))
+(add-to-list 'org-structure-template-alist '("hdl" . "src hdl :tangle /home/fede/Documents/lectures/nand2tetris/software/projects/01/xxx.hdl"))
 
 (defun efs/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
@@ -487,3 +488,16 @@ This is intended to be used with org-redisplay-inline-images."
 
 (when (string= system-name "archie")
   (load-file (expand-file-name "~/git_repos/dotfiles/.config/.emacs_archie")))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(sqlite3 which-key use-package rainbow-delimiters pyvenv python-mode org-roam-ui org-edna lsp-ui lsp-treemacs lsp-ivy ivy-rich helpful forge evil-nerd-commenter doom-modeline counsel-projectile company-box all-the-icons)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
