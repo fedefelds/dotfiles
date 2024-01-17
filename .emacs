@@ -333,6 +333,36 @@
   (org-roam-node-find)
   (org-roam-tag-add (completing-read-multiple "Tag: " (org-roam-tag-completions))))
 
+(defun dired-copy-images-links ()
+  "Works only in dired-mode, put in kill-ring,
+ready to be yanked in some other org-mode file,
+the links of marked image files using file-name-base as #+CAPTION.
+If no file marked then do it on all images files of directory.
+No file is moved nor copied anywhere.
+This is intended to be used with org-redisplay-inline-images."
+  (interactive)
+  (if (derived-mode-p 'dired-mode)                           ; if we are in dired-mode
+      (let* ((marked-files (dired-get-marked-files))         ; get marked file list
+             (number-marked-files                            ; store number of marked files
+              (string-to-number                              ; as a number
+               (dired-number-of-marked-files))))             ; for later reference
+        (when (= number-marked-files 0)                      ; if none marked then
+          (dired-toggle-marks)                               ; mark all files
+          (setq marked-files (dired-get-marked-files)))      ; get marked file list
+        (message "Files marked for copy")                    ; info message
+        (dired-number-of-marked-files)                       ; marked files info
+        (kill-new "\n")                                      ; start with a newline
+        (dolist (marked-file marked-files)                   ; walk the marked files list
+          (when (org-file-image-p marked-file)               ; only on image files
+            (kill-append                                     ; append image to kill-ring
+             (concat "#+CAPTION: "                           ; as caption,
+                     (file-name-base marked-file)            ; use file-name-base
+                     "\n[[file:" marked-file "]]\n\n") nil))) ; link to marked-file
+        (when (= number-marked-files 0)                      ; if none were marked then
+          (dired-toggle-marks)))                             ; unmark all
+    (message "Error: Does not work outside dired-mode")      ; can't work not in dired-mode
+    (ding)))                                                 ; error sound
+
 ;; This is needed as of Org 9.2
 (require 'org-tempo)
 
