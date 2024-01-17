@@ -108,6 +108,7 @@
   (setq org-blank-before-new-entry '((heading) (plain-list-item)))
   (setq org-startup-indented 1)
   (setq org-log-done 'time)
+  (setq org-startup-indented nil)
 
   ;; define todo-keywords
   (setq org-todo-keywords
