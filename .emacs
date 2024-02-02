@@ -501,3 +501,6 @@ This is intended to be used with org-redisplay-inline-images."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(when (string= system-name "PF4PZYFJ")
+  (load-file (expand-file-name "~/git_repos/dotfiles/.config/.emacs_ims")))
