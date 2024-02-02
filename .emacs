@@ -273,7 +273,7 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory "/home/fede/Documents/org/roam")
+  (org-roam-directory "~/Documents/org/roam")
   (org-roam-completion-everywhere t)
   (org-roam-db-autosync-mode)
   :bind (("C-c n l" . org-roam-buffer-toggle)
