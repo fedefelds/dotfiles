@@ -1,7 +1,5 @@
 configuration {
- kb-cancel: "Escape,Alt+F1";
- font: "hack 12";
- icon-theme: "Papirus";
- combi-modi: "window,drun,ssh,filebrowser";
+   disable-history: true;
+   fixed-num-lines: false;
  }
- @theme "solarized"
+@theme "gruvbox-dark-hard"
