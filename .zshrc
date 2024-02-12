@@ -5,6 +5,7 @@ alias ec="nohup emacsclient -c --no-wait > /dev/null 2>&1"
 alias er='systemctl --user restart emacs'
 alias ll='ls -hrtl'
 alias la='ls -hrtla'
+alias gtypist='gtypist ~/git_repos/dotfiles/common_files/p.typ'
 # colorscript --random
 
 # >>> conda initialize >>>
