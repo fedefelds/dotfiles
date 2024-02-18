@@ -265,15 +265,10 @@
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'org-babel-tangle-file)))
 
-;; org roam
-(setq org-return-follows-link  t)
-;;Open links in current window
-(setq org-link-frame-setup '((file . find-file)))
-
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory "/home/fede/Documents/org/roam")
+  (org-roam-directory "~/Documents/org/roam")
   (org-roam-completion-everywhere t)
   (org-roam-db-autosync-mode)
   :bind (("C-c n l" . org-roam-buffer-toggle)
@@ -483,21 +478,8 @@ This is intended to be used with org-redisplay-inline-images."
 
 (setq test_var 150)
 
-(when (string= system-name "archlinux")
-  (load-file (expand-file-name "~/git_repos/dotfiles/.config/.emacs_archlinux")))
-
 (when (string= system-name "archie")
   (load-file (expand-file-name "~/git_repos/dotfiles/.config/.emacs_archie")))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(sqlite3 which-key use-package rainbow-delimiters pyvenv python-mode org-roam-ui org-edna lsp-ui lsp-treemacs lsp-ivy ivy-rich helpful forge evil-nerd-commenter doom-modeline counsel-projectile company-box all-the-icons)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+(when (string= system-name "PF4PZYFJ")
+  (load-file (expand-file-name "~/git_repos/dotfiles/.config/.emacs_ims")))
