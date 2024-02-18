@@ -106,7 +106,7 @@
 (require 'org)
   (setq org-catch-invisible-edits 1)
   (setq org-blank-before-new-entry '((heading) (plain-list-item)))
-  (setq org-startup-indented 1)
+  (setq org-startup-indented nil)
   (setq org-log-done 'time)
   (setq org-startup-indented nil)
 
@@ -175,41 +175,41 @@
 ;; jump to top of the agenda after parsing
 (add-hook 'org-agenda-finalize-hook #'org-agenda-goto-today)
   (setq org-agenda-custom-commands
-            '(("g" "Get Things Done (GTD)"
-               ((agenda "Agenda"
-                        ((org-agenda-span 3)
-                         (org-agenda-prefix-format "%t %s [%e] ")
-                         (org-agenda-overriding-header "AGENDA")))
-                (tags "+inbox"
-                    ((org-agenda-prefix-format "%t %s")
-                     (org-agenda-overriding-header "INBOX")))
-                (tags "@home/NEXT"
-                      ((org-agenda-prefix-format "%t %s [%e] ")
-                       (org-agenda-overriding-header "NEXT @home")))
+	    '(("g" "Get Things Done (GTD)"
+	       ((agenda "Agenda"
+			((org-agenda-span 3)
+			 (org-agenda-prefix-format "%t %s [%e] ")
+			 (org-agenda-overriding-header "AGENDA")))
+		(tags "+inbox"
+		    ((org-agenda-prefix-format "%t %s")
+		     (org-agenda-overriding-header "INBOX")))
                 (tags "/ONGOING"
                       ((org-agenda-prefix-format "%t %s [%e] ")
                        (org-agenda-overriding-header "ONGOING")))
-                (tags "@work-project/NEXT"
-                      ((org-agenda-prefix-format "%t %s [%e] ")
-                       (org-agenda-overriding-header "NEXT @work")))
-                (tags "@comp-project/NEXT"
-                      ((org-agenda-prefix-format "%t %s [%e] ")
-                       (org-agenda-overriding-header "NEXT @comp")))
-                (tags "@errands-project/NEXT"
-                    ((org-agenda-prefix-format "%t %s [%e] ")
-                     (org-agenda-overriding-header "NEXT @errands")))
-                (tags "@phone-project/NEXT"
-                    ((org-agenda-prefix-format "%t %s [%e] ")
-                     (org-agenda-overriding-header "NEXT @phone")))
-                (tags "project/NEXT"
-                      ((org-agenda-prefix-format "%t %s [%e] ")
-                       (org-agenda-overriding-header "NEXT project tasks"))
-                (tags "/WAITING"
-                      ((org-agenda-prefix-format "%t %s [%e] ")
-                       (org-agenda-overriding-header "Waiting tasks")))
-                (tags "CLOSED>=\"<today>\"<-<tomorrow>"
-                      ((org-agenda-prefix-format "%t %s")
-                       (org-agenda-overriding-header "Completed today"))))))))
+		(tags "@home/NEXT"
+		      ((org-agenda-prefix-format "%t %s [%e] ")
+		       (org-agenda-overriding-header "NEXT @home")))
+		(tags "@work-project/NEXT"
+		      ((org-agenda-prefix-format "%t %s [%e] ")
+		       (org-agenda-overriding-header "NEXT @work")))
+		(tags "@comp-project/NEXT"
+		      ((org-agenda-prefix-format "%t %s [%e] ")
+		       (org-agenda-overriding-header "NEXT @comp")))
+		(tags "@errands-project/NEXT"
+		    ((org-agenda-prefix-format "%t %s [%e] ")
+		     (org-agenda-overriding-header "NEXT @errands")))
+		(tags "@phone-project/NEXT"
+		    ((org-agenda-prefix-format "%t %s [%e] ")
+		     (org-agenda-overriding-header "NEXT @phone")))
+		(tags "project/NEXT"
+		      ((org-agenda-prefix-format "%t %s [%e] ")
+		       (org-agenda-overriding-header "NEXT project tasks"))
+		(tags "/WAITING"
+		      ((org-agenda-prefix-format "%t %s [%e] ")
+		       (org-agenda-overriding-header "Waiting tasks")))
+		(tags "CLOSED>=\"<today>\"<-<tomorrow>"
+		      ((org-agenda-prefix-format "%t %s")
+		       (org-agenda-overriding-header "Completed today"))))))))
 
 (defun org-delegate ()
   "Delegate a task by setting status to WAITING and recording assignment details."
@@ -482,4 +482,7 @@ This is intended to be used with org-redisplay-inline-images."
   (load-file (expand-file-name "~/git_repos/dotfiles/.config/.emacs_archie")))
 
 (when (string= system-name "PF4PZYFJ")
+    (load-file (expand-file-name "~/git_repos/dotfiles/.config/.emacs_ims")))
+
+(when (string= system-name "debian")
   (load-file (expand-file-name "~/git_repos/dotfiles/.config/.emacs_ims")))
