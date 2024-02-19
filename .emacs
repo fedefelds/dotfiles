@@ -185,8 +185,8 @@
 		    ((org-agenda-prefix-format "%t %s")
 		     (org-agenda-overriding-header "INBOX")))
                 (tags "/ONGOING"
-                      ((org-agenda-prefix-format "%t %s [%e] ")
-                       (org-agenda-overriding-header "ONGOING")))
+		      ((org-agenda-prefix-format "%t %s [%e] ")
+		       (org-agenda-overriding-header "ONGOING")))
 		(tags "@home/NEXT"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "NEXT @home")))
