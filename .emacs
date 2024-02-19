@@ -116,13 +116,14 @@
 
   ;; define org contexts
   (setq org-tag-alist '((:startgroup . nil)
-                      ("@home" . ?h)
-                      ("@work" . ?w)
-                      ("@comp" . ?c)
-                      ("@errands" . ?e)
-                      ("@phone" . ?p)
-                      (:grouptags . nil)
-                      (:endgroup . nil)))
+		      ("@home" . ?h)
+		      ("@work" . ?w)
+		      ("@comp" . ?c)
+		      ("@errands" . ?e)
+		      ("@phone" . ?p)
+		      ("@anywhere" . ?a)
+		      (:grouptags . nil)
+		      (:endgroup . nil)))
 
 ;; global  #+PROPERTY: Effort_ALL 0 5 10 15 30 45 60 90 120 999
   (setq org-global-properties
@@ -201,6 +202,9 @@
 		(tags "@phone-project/NEXT"
 		    ((org-agenda-prefix-format "%t %s [%e] ")
 		     (org-agenda-overriding-header "NEXT @phone")))
+  		(tags "@anywhere-project/NEXT"
+		    ((org-agenda-prefix-format "%t %s [%e] ")
+		     (org-agenda-overriding-header "NEXT @anywhere")))
 		(tags "project/NEXT"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "NEXT project tasks"))
