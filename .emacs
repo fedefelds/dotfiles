@@ -362,6 +362,12 @@ This is intended to be used with org-redisplay-inline-images."
     (message "Error: Does not work outside dired-mode")      ; can't work not in dired-mode
     (ding)))                                                 ; error sound
 
+(use-package calfw
+  :ensure t
+  :config
+  ;; Additional configuration can go here
+)
+
 ;; This is needed as of Org 9.2
 (require 'org-tempo)
 
