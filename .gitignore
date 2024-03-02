@@ -61,3 +61,5 @@
 .config/yelp/*
 .gitignore.swp
 
+.config/Flipper Devices Inc/qFlipper.ini
+.config/GNU Radio/top_block.conf
