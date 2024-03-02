@@ -1,4 +1,5 @@
 #ignore sync files:
+.tmux/plugins/*
 .sync/*
 .emacs~
 .config/audacity/*
