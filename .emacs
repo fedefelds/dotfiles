@@ -44,7 +44,7 @@
 (setq use-dialog-box nil)
 
 ;; set doom-ayu-dark theme
-(load-theme 'wombat t)
+;;(load-theme 'wombat t)
 
 (use-package which-key
   :init (which-key-mode)
@@ -55,20 +55,21 @@
 (use-package ivy
     :diminish
     :bind (("C-s" . swiper)
-           :map ivy-minibuffer-map
-           ("TAB" . ivy-alt-done)
-           ("C-l" . ivy-alt-done)
-           ("C-j" . ivy-next-line)
-           ("C-k" . ivy-previous-line)
-           :map ivy-switch-buffer-map
-           ("C-k" . ivy-previous-line)
-           ("C-l" . ivy-done)
-           ("C-d" . ivy-switch-buffer-kill)
-           :map ivy-reverse-i-search-map
-           ("C-k" . ivy-previous-line)
-           ("C-d" . ivy-reverse-i-search-kill))
+	   :map ivy-minibuffer-map
+	   ("TAB" . ivy-alt-done)
+	   ("C-l" . ivy-alt-done)
+	   ("C-j" . ivy-next-line)
+	   ("C-k" . ivy-previous-line)
+	   :map ivy-switch-buffer-map
+	   ("C-k" . ivy-previous-line)
+	   ("C-l" . ivy-done)
+	   ("C-d" . ivy-switch-buffer-kill)
+	   :map ivy-reverse-i-search-map
+	   ("C-k" . ivy-previous-line)
+	   ("C-d" . ivy-reverse-i-search-kill))
     :config
     (ivy-mode 1)
+    (setq ivy-initial-inputs-alist nil)
     (setq ivy-use-selectable-prompt t))
 
 (use-package ivy-rich
@@ -104,33 +105,33 @@
   ([remap describe-key] . helpful-key))
 
 (require 'org)
-  (setq org-catch-invisible-edits 1)
-  (setq org-blank-before-new-entry '((heading) (plain-list-item)))
-  (setq org-startup-indented nil)
-  (setq org-log-done 'time)
-  (setq org-startup-indented nil)
+    (setq org-catch-invisible-edits 1)
+    (setq org-blank-before-new-entry '((heading) (plain-list-item)))
+    (setq org-startup-indented nil)
+;;    (setq org-log-done 'time)
+    (setq org-startup-indented nil)
 
-  ;; define todo-keywords
-  (setq org-todo-keywords
-        '((sequence "NEXT(n)" "TODO(t!)" "WAITING(w)" "ONGOING(o)" "|" "DONE(d!)" "CANC(c!)")))
+    ;; define todo-keywords
+    (setq org-todo-keywords
+          '((sequence "NEXT(n)" "TODO(t!)" "WAITING(w!)" "ONGOING(o!)" "|" "DONE(d!)" "CANC(c!)")))
 
-  ;; define org contexts
-  (setq org-tag-alist '((:startgroup . nil)
-		      ("@home" . ?h)
-		      ("@work" . ?w)
-		      ("@comp" . ?c)
-		      ("@errands" . ?e)
-		      ("@phone" . ?p)
-		      ("@anywhere" . ?a)
-		      (:grouptags . nil)
-		      (:endgroup . nil)))
+    ;; define org contexts
+    (setq org-tag-alist '((:startgroup . nil)
+			("@home" . ?h)
+			("@work" . ?w)
+			("@comp" . ?c)
+			("@errands" . ?e)
+			("@phone" . ?p)
+			("@anywhere" . ?a)
+			(:grouptags . nil)
+			(:endgroup . nil)))
 
-;; global  #+PROPERTY: Effort_ALL 0 5 10 15 30 45 60 90 120 999
-  (setq org-global-properties
-      '(("Effort_ALL" . "0 5 10 15 30 45 60 90 120 999")))
+  ;; global  #+PROPERTY: Effort_ALL 0 5 10 15 30 45 60 90 120 999
+    (setq org-global-properties
+	'(("Effort_ALL" . "0 5 10 15 30 45 60 90 120 999")))
 
-;; set org-deadline-warning-days to 0
-(setq org-deadline-warning-days 0)
+  ;; set org-deadline-warning-days to 0
+  (setq org-deadline-warning-days 0)
 
 (setq org-directory "~/Documents/org/roam")
 
@@ -363,10 +364,19 @@ This is intended to be used with org-redisplay-inline-images."
     (ding)))                                                 ; error sound
 
 (use-package calfw
-  :ensure t
-  :config
-  ;; Additional configuration can go here
-)
+  :ensure t)
+
+(use-package calfw-org
+  :after calfw
+  :ensure t)
+
+(defun my-calfw-org-agenda ()
+  (interactive)
+  (let ((org-agenda-files '("20231026232223-org_inbox.org" "20231026231716-org_agenda.org"
+			       "20231026232325-org_projects.org")))
+    (cfw:open-org-calendar)))
+
+(global-set-key (kbd "C-c o") 'my-calfw-org-agenda)
 
 ;; This is needed as of Org 9.2
 (require 'org-tempo)
@@ -483,6 +493,13 @@ This is intended to be used with org-redisplay-inline-images."
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(setq magit-diff-refine-hunk 'all)
+
+(use-package tex
+    :ensure auctex)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-auctex t)
+
 (add-hook 'org-agenda-finalize-hook #'beginning-of-buffer)
 (add-hook 'org-agenda-finalize-hook #'org-agenda-goto-today)
 
@@ -496,3 +513,4 @@ This is intended to be used with org-redisplay-inline-images."
 
 (when (string= system-name "debian")
   (load-file (expand-file-name "~/git_repos/dotfiles/.config/.emacs_ims")))
+(put 'LaTeX-narrow-to-environment 'disabled nil)
