@@ -136,7 +136,7 @@
 (setq org-directory "~/Documents/org/roam")
 
 (setq org-agenda-files (list "20231026232223-org_inbox.org" "20231026231716-org_agenda.org"
-                             "20231026232325-org_projects.org" "20231026232155-org_habits.org"))
+                             "20240307215416-org_projects.org" "20231026232155-org_habits.org" "20231026232404-org_sdm.org"))
 
 (setq org-capture-templates
       `(("i" "Inbox" entry (file "20231026232223-org_inbox.org")
@@ -148,11 +148,11 @@
                   ("j" "Journal Entry"
        entry (file+datetree "20231026232259-org_journal.org")
        "* %?")
-        ("h" "@home task" entry (file+headline "20231026232325-org_projects.org" "single tasks @home")  "* TODO %?\n :PROPERTIES:\n :TAGS: @home\n :END:\n /Entered on/ %U")
-        ("w" "@work task" entry (file+headline "20231026232325-org_projects.org" "single tasks @work")  "* TODO %?\n :PROPERTIES:\n :TAGS: @work\n :END:\n /Entered on/ %U")
-        ("c" "@computer task" entry (file+headline "20231026232325-org_projects.org" "single tasks @computer")  "* TODO %?\n :PROPERTIES:\n :TAGS: @computer\n :END:\n /Entered on/ %U")
-        ("e" "@errands task" entry (file+headline "20231026232325-org_projects.org" "single tasks @errands")  "* TODO %?\n :PROPERTIES:\n :TAGS: @errands\n :END:\n /Entered on/ %U")
-        ("p" "@phone task" entry (file+headline "20231026232325-org_projects.org" "single tasks @phone")  "* TODO %?\n :PROPERTIES:\n :TAGS: @phone\n :END:\n /Entered on/ %U")
+        ("h" "@home task" entry (file+headline "20240307215416-org_projects.org" "single tasks @home")  "* TODO %?\n :PROPERTIES:\n :TAGS: @home\n :END:\n /Entered on/ %U")
+        ("w" "@work task" entry (file+headline "20240307215416-org_projects.org" "single tasks @work")  "* TODO %?\n :PROPERTIES:\n :TAGS: @work\n :END:\n /Entered on/ %U")
+        ("c" "@computer task" entry (file+headline "20240307215416-org_projects.org" "single tasks @computer")  "* TODO %?\n :PROPERTIES:\n :TAGS: @computer\n :END:\n /Entered on/ %U")
+        ("e" "@errands task" entry (file+headline "20240307215416-org_projects.org" "single tasks @errands")  "* TODO %?\n :PROPERTIES:\n :TAGS: @errands\n :END:\n /Entered on/ %U")
+        ("p" "@phone task" entry (file+headline "20240307215416-org_projects.org" "single tasks @phone")  "* TODO %?\n :PROPERTIES:\n :TAGS: @phone\n :END:\n /Entered on/ %U")
         ))
 
 (defun org-capture-inbox ()
@@ -170,7 +170,7 @@
 (setq org-refile-use-outline-path 'file)
  (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-allow-creating-parent-nodes t)
-(setq org-refile-targets (quote (("20231026232325-org_projects.org" :maxlevel . 1)
+(setq org-refile-targets (quote (("20240307215416-org_projects.org" :maxlevel . 1)
                                  ("20231026231716-org_agenda.org" :maxlevel . 1)
                                  ("20231026232404-org_sdm.org" :maxlevel . 1))))
 
@@ -185,9 +185,12 @@
 		(tags "+inbox"
 		    ((org-agenda-prefix-format "%t %s")
 		     (org-agenda-overriding-header "INBOX")))
-                (tags "/ONGOING"
+		(tags "/ONGOING"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "ONGOING")))
+		(tags "/WAITING"
+		      ((org-agenda-prefix-format "%t %s [%e] ")
+		       (org-agenda-overriding-header "WAITING")))
 		(tags "@home/NEXT"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "NEXT @home")))
@@ -203,7 +206,7 @@
 		(tags "@phone-project/NEXT"
 		    ((org-agenda-prefix-format "%t %s [%e] ")
 		     (org-agenda-overriding-header "NEXT @phone")))
-  		(tags "@anywhere-project/NEXT"
+		(tags "@anywhere-project/NEXT"
 		    ((org-agenda-prefix-format "%t %s [%e] ")
 		     (org-agenda-overriding-header "NEXT @anywhere")))
 		(tags "project/NEXT"
@@ -273,16 +276,17 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory "~/Documents/org/roam")
+  (org-roam-directory (file-truename "~/Documents/org/roam"))
+  (org-roam-db-location (expand-file-name "org-roam.db" org-roam-directory))
   (org-roam-completion-everywhere t)
   (org-roam-db-autosync-mode)
   :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n o" . org-id-get-create)
-         ("C-c n t" . org-roam-tag-add)
-         ("C-c n T" . org-roam-node-find-and-tag)
-         ("C-c n a" . org-roam-alias-add)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert))
+	 ("C-c n o" . org-id-get-create)
+	 ("C-c n t" . org-roam-tag-add)
+	 ("C-c n T" . org-roam-node-find-and-tag)
+	 ("C-c n a" . org-roam-alias-add)
+	 ("C-c n f" . org-roam-node-find)
+	 ("C-c n i" . org-roam-node-insert))
   :config
   (org-roam-setup))
 
@@ -316,16 +320,16 @@
 (setq org-element-cache-persistent 'nil)
 
 (use-package org-roam-ui
-    :after org-roam
-;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;         a hookable mode anymore, you're advised to pick something yourself
-;;         if you don't care about startup time, use
-;;  :hook (after-init . org-roam-ui-mode)
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
+     :after org-roam
+ ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+ ;;         a hookable mode anymore, you're advised to pick something yourself
+ ;;         if you don't care about startup time, use
+:hook (after-init . org-roam-ui-mode)
+     :config
+     (setq org-roam-ui-sync-theme t
+	   org-roam-ui-follow t
+	   org-roam-ui-update-on-save t
+	   org-roam-ui-open-on-start t))
 
 (defun org-roam-node-find-and-tag ()
   "Run org-roam-node-find and then tag the current note."
@@ -373,7 +377,7 @@ This is intended to be used with org-redisplay-inline-images."
 (defun my-calfw-org-agenda ()
   (interactive)
   (let ((org-agenda-files '("20231026232223-org_inbox.org" "20231026231716-org_agenda.org"
-			       "20231026232325-org_projects.org")))
+			       "20240307215416-org_projects.org" "20231026232404-org_sdm.org")))
     (cfw:open-org-calendar)))
 
 (global-set-key (kbd "C-c o") 'my-calfw-org-agenda)
@@ -513,4 +517,17 @@ This is intended to be used with org-redisplay-inline-images."
 
 (when (string= system-name "debian")
   (load-file (expand-file-name "~/git_repos/dotfiles/.config/.emacs_ims")))
-(put 'LaTeX-narrow-to-environment 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values
+   '((org-download-image-dir . "~/Documents/local_pictures")
+     (org-download-image-dir . "~/Documents/org/roam/pictures"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
