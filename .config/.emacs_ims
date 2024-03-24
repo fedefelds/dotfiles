@@ -2,6 +2,11 @@
 
 (tool-bar-mode -1)          ; Disable the toolbar
 
+(use-package xclip
+  :ensure t)
+
+(xclip-mode 1)
+
 (use-package hydra
   :defer t)
 
