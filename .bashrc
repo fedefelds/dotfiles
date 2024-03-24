@@ -116,6 +116,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+rgrep() {
+    local search_term="$1"
+
+    # Perform the recursive grep search
+    grep -riEI "$search_term" ~/Documents/org/roam
+}
+
+
 alias e='emacsclient -t'
 alias ec="nohup emacsclient -c --no-wait > /dev/null 2>&1"
 alias er='systemctl --user restart emacs'
