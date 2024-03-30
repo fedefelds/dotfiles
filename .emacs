@@ -194,30 +194,30 @@
 		(tags "@home/NEXT"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "NEXT @home")))
-		(tags "@work-project/NEXT"
+		(tags "@work/NEXT"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "NEXT @work")))
-		(tags "@comp-project/NEXT"
+		(tags "@comp/NEXT"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "NEXT @comp")))
-		(tags "@errands-project/NEXT"
+		(tags "@errands/NEXT"
 		    ((org-agenda-prefix-format "%t %s [%e] ")
 		     (org-agenda-overriding-header "NEXT @errands")))
-		(tags "@phone-project/NEXT"
+		(tags "@phone/NEXT"
 		    ((org-agenda-prefix-format "%t %s [%e] ")
 		     (org-agenda-overriding-header "NEXT @phone")))
-		(tags "@anywhere-project/NEXT"
+		(tags "@anywhere/NEXT"
 		    ((org-agenda-prefix-format "%t %s [%e] ")
 		     (org-agenda-overriding-header "NEXT @anywhere")))
-		(tags "project/NEXT"
-		      ((org-agenda-prefix-format "%t %s [%e] ")
-		       (org-agenda-overriding-header "NEXT project tasks"))
+		 ;; (tags "project/NEXT"
+		 ;;       ((org-agenda-prefix-format "%t %s [%e] ")
+		 ;;        (org-agenda-overriding-header "NEXT project tasks")))
 		(tags "/WAITING"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "Waiting tasks")))
 		(tags "CLOSED>=\"<today>\"<-<tomorrow>"
 		      ((org-agenda-prefix-format "%t %s")
-		       (org-agenda-overriding-header "Completed today"))))))))
+		       (org-agenda-overriding-header "Completed today")))))))
 
 (defun org-delegate ()
   "Delegate a task by setting status to WAITING and recording assignment details."
