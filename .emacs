@@ -46,7 +46,7 @@
 (set-face-attribute 'default nil :height 200)
 
 ;; set doom-ayu-dark theme
-;;(load-theme 'wombat t)
+(load-theme 'wombat t)
 
 (use-package which-key
   :init (which-key-mode)
