@@ -329,7 +329,7 @@
      (setq org-roam-ui-sync-theme t
 	   org-roam-ui-follow t
 	   org-roam-ui-update-on-save t
-	   org-roam-ui-open-on-start t))
+	   org-roam-ui-open-on-start nil))
 
 (defun org-roam-node-find-and-tag ()
   "Run org-roam-node-find and then tag the current note."
