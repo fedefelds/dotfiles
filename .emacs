@@ -367,6 +367,12 @@ This is intended to be used with org-redisplay-inline-images."
     (message "Error: Does not work outside dired-mode")      ; can't work not in dired-mode
     (ding)))                                                 ; error sound
 
+(setq holiday-islamic-holidays nil)
+(setq holiday-oriental-holidays nil)
+(setq holiday-bahai-holidays nil)
+
+(add-hook 'calendar-mode-hook #'calendar-mark-holidays)
+
 (use-package calfw
   :ensure t)
 
@@ -381,6 +387,95 @@ This is intended to be used with org-redisplay-inline-images."
     (cfw:open-org-calendar)))
 
 (global-set-key (kbd "C-c o") 'my-calfw-org-agenda)
+
+(eval-when-compile
+  (require 'calendar)
+  (require 'holidays))
+
+(defvar holiday-austrian-holidays nil
+  "Austrian holidays")
+
+(setq holiday-austrian-holidays
+      `((holiday-fixed 12 31 "Silvester")
+	(holiday-fixed 1 1 "Neujahr")
+	(holiday-fixed 1 6 "Heilige drei Könige")
+	(holiday-fixed 2 14 "Valentinstag")
+	(holiday-fixed 5 1 "Staatsfeiertag")
+	(holiday-fixed 6 21 "Fête de la musique")
+	(holiday-fixed 8 15 "Mariä Himmelfahrt")
+	(holiday-fixed 10 26 "Nationalfeiertag")
+	(holiday-fixed 11 1 "Allerheiligen")
+	(holiday-fixed 12 8 "Mariä Empfängnis")
+	(holiday-fixed 12 24 "Weihnachten")
+	(holiday-fixed 12 25 "Christtag")
+	(holiday-fixed 12 26 "Stefanitag")
+        ;; variable
+        (holiday-easter-etc -48 "Rosenmontag")
+        (holiday-easter-etc -47 "Faschingsdienstag")
+        (holiday-easter-etc -46 "Aschermittwoch")
+	(holiday-easter-etc -7 "Palmsonntag")
+	(holiday-easter-etc -3 "Gründonnerstag")
+	(holiday-easter-etc -2 "Karfreitag")
+	(holiday-easter-etc -1 "Karsamstag")
+	(holiday-easter-etc 0 "Ostersonntag")
+        (holiday-easter-etc 1 "Ostermontag")
+        (holiday-easter-etc 39 "Christi Himmelfahrt")
+        (holiday-easter-etc 49 "Pfingstsonntag")
+        (holiday-easter-etc 50 "Pfingstmontag")
+        (holiday-easter-etc 60 "Fronleichnam")))
+(provide 'austrian-holidays)
+(require 'austrian-holidays)
+(setq calendar-holidays (append calendar-holidays holiday-austrian-holidays))
+
+;; Feriados en Argentina
+  ;; Enero 1         Año Nuevo
+  ;; Marzo/Abril #   Semana Santa - Viernes Santo
+  ;; Abril 2##       Día del Veterano y de los Caídos en la Guerra de Malvinas
+  ;; Mayo 1°         Día del Trabajo
+  ;; Mayo 25         Aniversario del Primer Gobierno Patrio
+  ;; Junio 20###     Día de la Bandera Nacional
+  ;; Julio 9         Día de la Independencia Nacional
+  ;; Agosto 17###    Aniversario de la muerte del general José de San Martín
+  ;; Octubre 12##    Día de la Raza
+  ;; Diciembre 8     Día de la Inmaculada Concepción
+  ;; Diciembre 25    Navidad
+
+  ;; # Feriado de fecha variable.
+	 
+  ;; ## Feriado que si se produce un día martes o miércoles, se traslada al
+  ;;    lunes anterior y, si coincide con un día jueves o viernes, se
+  ;;    cumple el lunes siguiente.
+	 
+  ;; ### Feriado que será cumplido el día que corresponda al tercer lunes del
+  ;;     mes respectivo.
+  (defun movable-holiday(date)
+    (let* ((week-day (calendar-day-of-week date))
+	   (day (calendar-absolute-from-gregorian date)))
+      ;; (format "date %s, week day %d, day %d\n" date week-day day)
+      (cond ((= week-day 2)
+	     (calendar-gregorian-from-absolute (- day 1)))
+	    ((= week-day 3)
+	     (calendar-gregorian-from-absolute (- day 2)))
+	    ((= week-day 4)
+	     (calendar-gregorian-from-absolute (+ day 4)))
+	    ((= week-day 5)
+	     (calendar-gregorian-from-absolute (+ day 3)))
+	    (t date))))
+
+  (setq arg-holidays 
+	'((holiday-fixed 1 1   "Anio Nuevo") 
+	  (funcall 'holiday-sexp 
+	   '(movable-holiday (list 4 2 year)) "Dia de Malvinas")
+	  (holiday-fixed 5 1   "Dia del Trabajo") 
+	  (holiday-fixed 5 25  "Revolucion de Mayo") 
+	  (holiday-float 6 1 3 "Dia de la Bandera")
+	  (holiday-fixed 7 9   "Dia de la Independencia") 
+	  (holiday-float 8 1 3 "Dia de José de San Martín")
+	  (funcall 'holiday-sexp 
+	   '(movable-holiday (list 10 12 year)) "Dia de la Raza") 
+	  (holiday-fixed 12 8  "Dia de la Virgen?") 
+	  (holiday-fixed 12 25 "Navidad")))
+(setq calendar-holidays (append calendar-holidays arg-holidays))
 
 ;; This is needed as of Org 9.2
 (require 'org-tempo)
