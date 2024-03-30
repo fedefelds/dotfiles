@@ -43,6 +43,8 @@
 ;; Don't pop up UI dialogs when prompting
 (setq use-dialog-box nil)
 
+(set-face-attribute 'default nil :height 200)
+
 ;; set doom-ayu-dark theme
 ;;(load-theme 'wombat t)
 
