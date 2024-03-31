@@ -43,8 +43,10 @@
 ;; Don't pop up UI dialogs when prompting
 (setq use-dialog-box nil)
 
+(set-face-attribute 'default nil :height 200)
+
 ;; set doom-ayu-dark theme
-;;(load-theme 'wombat t)
+(load-theme 'wombat t)
 
 (use-package which-key
   :init (which-key-mode)
@@ -131,12 +133,12 @@
 	'(("Effort_ALL" . "0 5 10 15 30 45 60 90 120 999")))
 
   ;; set org-deadline-warning-days to 0
-  (setq org-deadline-warning-days 0)
+  (setq org-deadline-warning-days 6)
 
 (setq org-directory "~/Documents/org/roam")
 
 (setq org-agenda-files (list "20231026232223-org_inbox.org" "20231026231716-org_agenda.org"
-                             "20231026232325-org_projects.org" "20231026232155-org_habits.org"))
+                             "20240307215416-org_projects.org" "20231026232155-org_habits.org" "20231026232404-org_sdm.org"))
 
 (setq org-capture-templates
       `(("i" "Inbox" entry (file "20231026232223-org_inbox.org")
@@ -148,11 +150,11 @@
                   ("j" "Journal Entry"
        entry (file+datetree "20231026232259-org_journal.org")
        "* %?")
-        ("h" "@home task" entry (file+headline "20231026232325-org_projects.org" "single tasks @home")  "* TODO %?\n :PROPERTIES:\n :TAGS: @home\n :END:\n /Entered on/ %U")
-        ("w" "@work task" entry (file+headline "20231026232325-org_projects.org" "single tasks @work")  "* TODO %?\n :PROPERTIES:\n :TAGS: @work\n :END:\n /Entered on/ %U")
-        ("c" "@computer task" entry (file+headline "20231026232325-org_projects.org" "single tasks @computer")  "* TODO %?\n :PROPERTIES:\n :TAGS: @computer\n :END:\n /Entered on/ %U")
-        ("e" "@errands task" entry (file+headline "20231026232325-org_projects.org" "single tasks @errands")  "* TODO %?\n :PROPERTIES:\n :TAGS: @errands\n :END:\n /Entered on/ %U")
-        ("p" "@phone task" entry (file+headline "20231026232325-org_projects.org" "single tasks @phone")  "* TODO %?\n :PROPERTIES:\n :TAGS: @phone\n :END:\n /Entered on/ %U")
+        ("h" "@home task" entry (file+headline "20240307215416-org_projects.org" "single tasks @home")  "* TODO %?\n :PROPERTIES:\n :TAGS: @home\n :END:\n /Entered on/ %U")
+        ("w" "@work task" entry (file+headline "20240307215416-org_projects.org" "single tasks @work")  "* TODO %?\n :PROPERTIES:\n :TAGS: @work\n :END:\n /Entered on/ %U")
+        ("c" "@computer task" entry (file+headline "20240307215416-org_projects.org" "single tasks @computer")  "* TODO %?\n :PROPERTIES:\n :TAGS: @computer\n :END:\n /Entered on/ %U")
+        ("e" "@errands task" entry (file+headline "20240307215416-org_projects.org" "single tasks @errands")  "* TODO %?\n :PROPERTIES:\n :TAGS: @errands\n :END:\n /Entered on/ %U")
+        ("p" "@phone task" entry (file+headline "20240307215416-org_projects.org" "single tasks @phone")  "* TODO %?\n :PROPERTIES:\n :TAGS: @phone\n :END:\n /Entered on/ %U")
         ))
 
 (defun org-capture-inbox ()
@@ -170,7 +172,7 @@
 (setq org-refile-use-outline-path 'file)
  (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-allow-creating-parent-nodes t)
-(setq org-refile-targets (quote (("20231026232325-org_projects.org" :maxlevel . 1)
+(setq org-refile-targets (quote (("20240307215416-org_projects.org" :maxlevel . 1)
                                  ("20231026231716-org_agenda.org" :maxlevel . 1)
                                  ("20231026232404-org_sdm.org" :maxlevel . 1))))
 
@@ -185,36 +187,39 @@
 		(tags "+inbox"
 		    ((org-agenda-prefix-format "%t %s")
 		     (org-agenda-overriding-header "INBOX")))
-                (tags "/ONGOING"
+		(tags "/ONGOING"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "ONGOING")))
+		(tags "/WAITING"
+		      ((org-agenda-prefix-format "%t %s [%e] ")
+		       (org-agenda-overriding-header "WAITING")))
 		(tags "@home/NEXT"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "NEXT @home")))
-		(tags "@work-project/NEXT"
+		(tags "@work/NEXT"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "NEXT @work")))
-		(tags "@comp-project/NEXT"
+		(tags "@comp/NEXT"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "NEXT @comp")))
-		(tags "@errands-project/NEXT"
+		(tags "@errands/NEXT"
 		    ((org-agenda-prefix-format "%t %s [%e] ")
 		     (org-agenda-overriding-header "NEXT @errands")))
-		(tags "@phone-project/NEXT"
+		(tags "@phone/NEXT"
 		    ((org-agenda-prefix-format "%t %s [%e] ")
 		     (org-agenda-overriding-header "NEXT @phone")))
-  		(tags "@anywhere-project/NEXT"
+		(tags "@anywhere/NEXT"
 		    ((org-agenda-prefix-format "%t %s [%e] ")
 		     (org-agenda-overriding-header "NEXT @anywhere")))
-		(tags "project/NEXT"
-		      ((org-agenda-prefix-format "%t %s [%e] ")
-		       (org-agenda-overriding-header "NEXT project tasks"))
+		 ;; (tags "project/NEXT"
+		 ;;       ((org-agenda-prefix-format "%t %s [%e] ")
+		 ;;        (org-agenda-overriding-header "NEXT project tasks")))
 		(tags "/WAITING"
 		      ((org-agenda-prefix-format "%t %s [%e] ")
 		       (org-agenda-overriding-header "Waiting tasks")))
 		(tags "CLOSED>=\"<today>\"<-<tomorrow>"
 		      ((org-agenda-prefix-format "%t %s")
-		       (org-agenda-overriding-header "Completed today"))))))))
+		       (org-agenda-overriding-header "Completed today")))))))
 
 (defun org-delegate ()
   "Delegate a task by setting status to WAITING and recording assignment details."
@@ -273,16 +278,17 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory "~/Documents/org/roam")
+  (org-roam-directory (file-truename "~/Documents/org/roam"))
+  (org-roam-db-location (expand-file-name "org-roam.db" org-roam-directory))
   (org-roam-completion-everywhere t)
   (org-roam-db-autosync-mode)
   :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n o" . org-id-get-create)
-         ("C-c n t" . org-roam-tag-add)
-         ("C-c n T" . org-roam-node-find-and-tag)
-         ("C-c n a" . org-roam-alias-add)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert))
+	 ("C-c n o" . org-id-get-create)
+	 ("C-c n t" . org-roam-tag-add)
+	 ("C-c n T" . org-roam-node-find-and-tag)
+	 ("C-c n a" . org-roam-alias-add)
+	 ("C-c n f" . org-roam-node-find)
+	 ("C-c n i" . org-roam-node-insert))
   :config
   (org-roam-setup))
 
@@ -316,16 +322,16 @@
 (setq org-element-cache-persistent 'nil)
 
 (use-package org-roam-ui
-    :after org-roam
-;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;         a hookable mode anymore, you're advised to pick something yourself
-;;         if you don't care about startup time, use
-;;  :hook (after-init . org-roam-ui-mode)
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
+     :after org-roam
+ ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+ ;;         a hookable mode anymore, you're advised to pick something yourself
+ ;;         if you don't care about startup time, use
+:hook (after-init . org-roam-ui-mode)
+     :config
+     (setq org-roam-ui-sync-theme t
+	   org-roam-ui-follow t
+	   org-roam-ui-update-on-save t
+	   org-roam-ui-open-on-start nil))
 
 (defun org-roam-node-find-and-tag ()
   "Run org-roam-node-find and then tag the current note."
@@ -363,6 +369,12 @@ This is intended to be used with org-redisplay-inline-images."
     (message "Error: Does not work outside dired-mode")      ; can't work not in dired-mode
     (ding)))                                                 ; error sound
 
+(setq holiday-islamic-holidays nil)
+(setq holiday-oriental-holidays nil)
+(setq holiday-bahai-holidays nil)
+
+(add-hook 'calendar-mode-hook #'calendar-mark-holidays)
+
 (use-package calfw
   :ensure t)
 
@@ -373,10 +385,99 @@ This is intended to be used with org-redisplay-inline-images."
 (defun my-calfw-org-agenda ()
   (interactive)
   (let ((org-agenda-files '("20231026232223-org_inbox.org" "20231026231716-org_agenda.org"
-			       "20231026232325-org_projects.org")))
+			       "20240307215416-org_projects.org" "20231026232404-org_sdm.org")))
     (cfw:open-org-calendar)))
 
 (global-set-key (kbd "C-c o") 'my-calfw-org-agenda)
+
+(eval-when-compile
+  (require 'calendar)
+  (require 'holidays))
+
+(defvar holiday-austrian-holidays nil
+  "Austrian holidays")
+
+(setq holiday-austrian-holidays
+      `((holiday-fixed 12 31 "Silvester")
+	(holiday-fixed 1 1 "Neujahr")
+	(holiday-fixed 1 6 "Heilige drei Könige")
+	(holiday-fixed 2 14 "Valentinstag")
+	(holiday-fixed 5 1 "Staatsfeiertag")
+	(holiday-fixed 6 21 "Fête de la musique")
+	(holiday-fixed 8 15 "Mariä Himmelfahrt")
+	(holiday-fixed 10 26 "Nationalfeiertag")
+	(holiday-fixed 11 1 "Allerheiligen")
+	(holiday-fixed 12 8 "Mariä Empfängnis")
+	(holiday-fixed 12 24 "Weihnachten")
+	(holiday-fixed 12 25 "Christtag")
+	(holiday-fixed 12 26 "Stefanitag")
+        ;; variable
+        (holiday-easter-etc -48 "Rosenmontag")
+        (holiday-easter-etc -47 "Faschingsdienstag")
+        (holiday-easter-etc -46 "Aschermittwoch")
+	(holiday-easter-etc -7 "Palmsonntag")
+	(holiday-easter-etc -3 "Gründonnerstag")
+	(holiday-easter-etc -2 "Karfreitag")
+	(holiday-easter-etc -1 "Karsamstag")
+	(holiday-easter-etc 0 "Ostersonntag")
+        (holiday-easter-etc 1 "Ostermontag")
+        (holiday-easter-etc 39 "Christi Himmelfahrt")
+        (holiday-easter-etc 49 "Pfingstsonntag")
+        (holiday-easter-etc 50 "Pfingstmontag")
+        (holiday-easter-etc 60 "Fronleichnam")))
+(provide 'austrian-holidays)
+(require 'austrian-holidays)
+(setq calendar-holidays (append calendar-holidays holiday-austrian-holidays))
+
+;; Feriados en Argentina
+  ;; Enero 1         Año Nuevo
+  ;; Marzo/Abril #   Semana Santa - Viernes Santo
+  ;; Abril 2##       Día del Veterano y de los Caídos en la Guerra de Malvinas
+  ;; Mayo 1°         Día del Trabajo
+  ;; Mayo 25         Aniversario del Primer Gobierno Patrio
+  ;; Junio 20###     Día de la Bandera Nacional
+  ;; Julio 9         Día de la Independencia Nacional
+  ;; Agosto 17###    Aniversario de la muerte del general José de San Martín
+  ;; Octubre 12##    Día de la Raza
+  ;; Diciembre 8     Día de la Inmaculada Concepción
+  ;; Diciembre 25    Navidad
+
+  ;; # Feriado de fecha variable.
+	 
+  ;; ## Feriado que si se produce un día martes o miércoles, se traslada al
+  ;;    lunes anterior y, si coincide con un día jueves o viernes, se
+  ;;    cumple el lunes siguiente.
+	 
+  ;; ### Feriado que será cumplido el día que corresponda al tercer lunes del
+  ;;     mes respectivo.
+  (defun movable-holiday(date)
+    (let* ((week-day (calendar-day-of-week date))
+	   (day (calendar-absolute-from-gregorian date)))
+      ;; (format "date %s, week day %d, day %d\n" date week-day day)
+      (cond ((= week-day 2)
+	     (calendar-gregorian-from-absolute (- day 1)))
+	    ((= week-day 3)
+	     (calendar-gregorian-from-absolute (- day 2)))
+	    ((= week-day 4)
+	     (calendar-gregorian-from-absolute (+ day 4)))
+	    ((= week-day 5)
+	     (calendar-gregorian-from-absolute (+ day 3)))
+	    (t date))))
+
+  (setq arg-holidays 
+	'((holiday-fixed 1 1   "Anio Nuevo") 
+	  (funcall 'holiday-sexp 
+	   '(movable-holiday (list 4 2 year)) "Dia de Malvinas")
+	  (holiday-fixed 5 1   "Dia del Trabajo") 
+	  (holiday-fixed 5 25  "Revolucion de Mayo") 
+	  (holiday-float 6 1 3 "Dia de la Bandera")
+	  (holiday-fixed 7 9   "Dia de la Independencia") 
+	  (holiday-float 8 1 3 "Dia de José de San Martín")
+	  (funcall 'holiday-sexp 
+	   '(movable-holiday (list 10 12 year)) "Dia de la Raza") 
+	  (holiday-fixed 12 8  "Dia de la Virgen?") 
+	  (holiday-fixed 12 25 "Navidad")))
+(setq calendar-holidays (append calendar-holidays arg-holidays))
 
 ;; This is needed as of Org 9.2
 (require 'org-tempo)
@@ -513,4 +614,17 @@ This is intended to be used with org-redisplay-inline-images."
 
 (when (string= system-name "debian")
   (load-file (expand-file-name "~/git_repos/dotfiles/.config/.emacs_ims")))
-(put 'LaTeX-narrow-to-environment 'disabled nil)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(all-the-icons async auctex calfw calfw-org company-box
+		   counsel-projectile doom-modeline
+		   evil-nerd-commenter forge helpful ivy-rich lsp-ivy
+		   lsp-treemacs lsp-ui org-bullets org-download
+		   org-edna org-roam-ui python-mode pyvenv
+		   rainbow-delimiters ssh-agency which-key xclip))
+ '(safe-local-variable-values '((org-download-image-dir . "~/Documents/local_pictures"))))

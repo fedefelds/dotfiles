@@ -2,6 +2,11 @@
 
 (tool-bar-mode -1)          ; Disable the toolbar
 
+(use-package xclip
+  :ensure t)
+
+(xclip-mode 1)
+
 (use-package hydra
   :defer t)
 
@@ -70,9 +75,10 @@ to reverse-search a pdf using SyncTeX. Note that the quotes and double-quotes ma
 ;;   :hook (org-mode . efs/org-mode-visual-fill))
 
 (use-package org-download
-  :ensure t
   :config
-  ;; Set the image directory
-  (setq org-download-image-dir "~/Documents/pictures")
-  ;; Enable org-download in dired mode (for drag-and-drop)
-  (add-hook 'dired-mode-hook 'org-download-enable))
+  (setq org-download-screenshot-method "gnome-screenshot -a -f %s")
+  (setq org-download-method 'directory)
+  (setq-default org-download-image-dir "~/Documents/org/roam/pictures"))
+
+;; Drag-and-drop to `dired`
+(add-hook 'dired-mode-hook 'org-download-enable)
