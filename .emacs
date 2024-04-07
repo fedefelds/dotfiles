@@ -43,7 +43,16 @@
 ;; Don't pop up UI dialogs when prompting
 (setq use-dialog-box nil)
 
-(set-face-attribute 'default nil :height 200)
+(set-face-attribute 'default nil :height 130)
+
+(defun set-default-font-height ()
+  "Prompts the user for a font height and sets it for the default face."
+  (interactive)
+  (let ((new-height (read-number "Enter font height (in points): ")))
+    (set-face-attribute 'default nil :height (* new-height 10))))
+
+;; Bind this function to a key combination, e.g., C-c h
+(global-set-key (kbd "C-c h") 'set-default-font-height)
 
 ;; set doom-ayu-dark theme
 (load-theme 'wombat t)
