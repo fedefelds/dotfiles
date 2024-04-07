@@ -66,3 +66,4 @@
 .config/balena-etcher/*
 .config/ksnip/ksnip.conf
 .config/parlatype/*
+.config/systemd/user/default.target.wants/appimagelauncherd.service
