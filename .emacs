@@ -496,7 +496,7 @@ This is intended to be used with org-redisplay-inline-images."
 (add-to-list 'org-structure-template-alist '("py" . "src python"))
 (add-to-list 'org-structure-template-alist '("awk" . "src awk :results output code :in-file ~/Documents/library/awk/"))
 (add-to-list 'org-structure-template-alist '("sed" . "src sed :results output code :in-file ~/Documents/library/sed/"))
-(add-to-list 'org-structure-template-alist '("hdl" . "src hdl :tangle /home/fede/Documents/lectures/nand2tetris/software/projects/01/xxx.hdl"))
+(add-to-list 'org-structure-template-alist '("hdl" . "src shell :tangle ~/Documents/lectures/nand2tetris/software/projects/01/xxx.hdl"))
 
 (defun efs/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
