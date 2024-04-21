@@ -67,3 +67,6 @@
 .config/ksnip/ksnip.conf
 .config/parlatype/*
 .config/systemd/user/default.target.wants/appimagelauncherd.service
+node_modules/*
+package-lock.json
+package.json
