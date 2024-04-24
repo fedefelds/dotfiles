@@ -223,9 +223,6 @@
 		 ;; (tags "project/NEXT"
 		 ;;       ((org-agenda-prefix-format "%t %s [%e] ")
 		 ;;        (org-agenda-overriding-header "NEXT project tasks")))
-		(tags "/WAITING"
-		      ((org-agenda-prefix-format "%t %s [%e] ")
-		       (org-agenda-overriding-header "Waiting tasks")))
 		(tags "CLOSED>=\"<today>\"<-<tomorrow>"
 		      ((org-agenda-prefix-format "%t %s")
 		       (org-agenda-overriding-header "Completed today")))))))
@@ -244,6 +241,14 @@
       (message "Task name cannot be empty"))))
 
 (global-set-key (kbd "C-c d") 'org-delegate)
+
+(use-package org-fragtog
+  :ensure t
+  :hook (org-mode . org-fragtog-mode))
+
+(setq org-format-latex-options
+   '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
 
 (org-babel-do-load-languages
     'org-babel-load-languages
