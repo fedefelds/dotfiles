@@ -288,7 +288,7 @@
   :ensure t
   :custom
   (org-roam-directory (file-truename "~/Documents/org/roam"))
-  (org-roam-db-location (expand-file-name "org-roam.db" org-roam-directory))
+  ;; (org-roam-db-location (expand-file-name "org-roam.db" org-roam-directory)) 
   (org-roam-completion-everywhere t)
   (org-roam-db-autosync-mode)
   :bind (("C-c n l" . org-roam-buffer-toggle)
