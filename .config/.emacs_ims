@@ -73,7 +73,8 @@ to reverse-search a pdf using SyncTeX. Note that the quotes and double-quotes ma
   :config
   (setq org-download-screenshot-method "gnome-screenshot -a -f %s")
   (setq org-download-method 'directory)
-  (setq-default org-download-image-dir "~/Documents/org/roam/pictures"))
+  (setq-default org-download-image-dir "~/Documents/org/roam/pictures")
+  :bind ("C-c s" . org-download-screenshot))
 
 ;; Drag-and-drop to `dired`
 (add-hook 'dired-mode-hook 'org-download-enable)
