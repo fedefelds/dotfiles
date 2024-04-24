@@ -150,33 +150,33 @@
                              "20240307215416-org_projects.org" "20231026232155-org_habits.org" "20231026232404-org_sdm.org"))
 
 (setq org-capture-templates
-      `(("i" "Inbox" entry (file "20231026232223-org_inbox.org")
-         ,(concat "* TODO %?\n"
-                  ":PROPERTIES:\n"
-                  ":TRIGGER: next-sibling todo!(NEXT)\n"
-                  ":END:\n"
-                  "/Entered on/ %U"))
-                  ("j" "Journal Entry"
-       entry (file+datetree "20231026232259-org_journal.org")
-       "* %?")
-        ("h" "@home task" entry (file+headline "20240307215416-org_projects.org" "single tasks @home")  "* TODO %?\n :PROPERTIES:\n :TAGS: @home\n :END:\n /Entered on/ %U")
-        ("w" "@work task" entry (file+headline "20240307215416-org_projects.org" "single tasks @work")  "* TODO %?\n :PROPERTIES:\n :TAGS: @work\n :END:\n /Entered on/ %U")
-        ("c" "@computer task" entry (file+headline "20240307215416-org_projects.org" "single tasks @computer")  "* TODO %?\n :PROPERTIES:\n :TAGS: @computer\n :END:\n /Entered on/ %U")
-        ("e" "@errands task" entry (file+headline "20240307215416-org_projects.org" "single tasks @errands")  "* TODO %?\n :PROPERTIES:\n :TAGS: @errands\n :END:\n /Entered on/ %U")
-        ("p" "@phone task" entry (file+headline "20240307215416-org_projects.org" "single tasks @phone")  "* TODO %?\n :PROPERTIES:\n :TAGS: @phone\n :END:\n /Entered on/ %U")
-        ))
+        `(("i" "Inbox" entry (file "20231026232223-org_inbox.org")
+           ,(concat "* TODO %?\n"
+;;                    ":PROPERTIES:\n"
+;;                    ":TRIGGER: next-sibling todo!(NEXT)\n"
+;;                    ":END:\n"
+                    "/Entered on/ %U"))
+                    ("j" "Journal Entry"
+         entry (file+datetree "20231026232259-org_journal.org")
+         "* %?")
+          ("h" "@home task" entry (file+headline "20240307215416-org_projects.org" "single tasks @home")  "* TODO %?\n :PROPERTIES:\n :TAGS: @home\n :END:\n /Entered on/ %U")
+          ("w" "@work task" entry (file+headline "20240307215416-org_projects.org" "single tasks @work")  "* TODO %?\n :PROPERTIES:\n :TAGS: @work\n :END:\n /Entered on/ %U")
+          ("c" "@computer task" entry (file+headline "20240307215416-org_projects.org" "single tasks @computer")  "* TODO %?\n :PROPERTIES:\n :TAGS: @computer\n :END:\n /Entered on/ %U")
+          ("e" "@errands task" entry (file+headline "20240307215416-org_projects.org" "single tasks @errands")  "* TODO %?\n :PROPERTIES:\n :TAGS: @errands\n :END:\n /Entered on/ %U")
+          ("p" "@phone task" entry (file+headline "20240307215416-org_projects.org" "single tasks @phone")  "* TODO %?\n :PROPERTIES:\n :TAGS: @phone\n :END:\n /Entered on/ %U")
+          ))
 
-(defun org-capture-inbox ()
-  (interactive)
-  (call-interactively 'org-store-link)
-  (org-capture nil "i"))
+  (defun org-capture-inbox ()
+    (interactive)
+    (call-interactively 'org-store-link)
+    (org-capture nil "i"))
 
-;; use full window for org-capture
-(add-hook 'org-capture-mode-hook 'delete-other-windows)
+  ;; use full window for org-capture
+  (add-hook 'org-capture-mode-hook 'delete-other-windows)
 
-(define-key global-map (kbd "C-c a") 'org-agenda)
-(define-key global-map (kbd "C-c c") 'org-capture)
-(define-key global-map (kbd "C-c i") 'org-capture-inbox)
+  (define-key global-map (kbd "C-c a") 'org-agenda)
+  (define-key global-map (kbd "C-c c") 'org-capture)
+  (define-key global-map (kbd "C-c i") 'org-capture-inbox)
 
 (setq org-refile-use-outline-path 'file)
  (setq org-outline-path-complete-in-steps nil)
