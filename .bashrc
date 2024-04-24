@@ -123,6 +123,11 @@ rgrep() {
     grep -riEI "$search_term" ~/Documents/org/roam
 }
 
+mangrep() {
+    local search_term="$1"
+
+    pdfgrep -ri --page-number "\<$1\>" ~/git_repos/*/*.pdf
+}
 
 alias e='emacsclient -t'
 alias ec="nohup emacsclient -c --no-wait > /dev/null 2>&1"
