@@ -70,3 +70,14 @@
 node_modules/*
 package-lock.json
 package.json
+.config/Virtualbox/*
+.config/VirtualBox/compreg.dat
+.config/VirtualBox/selectorwindow.log
+.config/VirtualBox/selectorwindow.log.1
+.config/VirtualBox/selectorwindow.log.2
+.config/VirtualBox/selectorwindow.log.3
+.config/VirtualBox/VBoxSVC.log
+.config/VirtualBox/VBoxSVC.log.1
+.config/VirtualBox/VirtualBox.xml
+.config/VirtualBox/VirtualBox.xml-prev
+.config/VirtualBox/xpti.dat
