@@ -289,6 +289,13 @@
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'org-babel-tangle-file)))
 
+(defun my-org-insert-todo ()
+  "Insert TODO if the current buffer is 20231026232223-org_inbox.org."
+  (if (string-equal (buffer-name) "20231026232223-org_inbox.org")
+      (org-todo "TODO")))
+
+(add-hook 'org-insert-heading-hook 'my-org-insert-todo)
+
 (use-package org-roam
   :ensure t
   :custom
