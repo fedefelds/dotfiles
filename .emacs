@@ -296,6 +296,8 @@
 
 (add-hook 'org-insert-heading-hook 'my-org-insert-todo)
 
+(setq org-todo-repeat-to-state "TODO")
+
 (use-package org-roam
   :ensure t
   :custom
