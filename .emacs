@@ -55,7 +55,7 @@
 (global-set-key (kbd "C-c h") 'set-default-font-height)
 
 ;; set doom-ayu-dark theme
-(load-theme 'wombat t)
+(load-theme 'manoj-dark t)
 
 (use-package which-key
   :init (which-key-mode)
