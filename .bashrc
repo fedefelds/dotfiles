@@ -129,6 +129,14 @@ mangrep() {
     pdfgrep -ri --page-number "\<$1\>" ~/git_repos/*/*.pdf
 }
 
+#setup EDITOR variable
+if systemctl --user is-active emacs > /dev/null 2>&1; then
+    export EDITOR='emacsclient -t'
+else
+    export EDITOR='emacs -nw -Q'
+fi
+
+
 alias e='emacsclient -t'
 alias ec="nohup emacsclient -c --no-wait > /dev/null 2>&1"
 alias er='systemctl --user restart emacs'
