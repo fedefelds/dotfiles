@@ -392,6 +392,100 @@ This is intended to be used with org-redisplay-inline-images."
     (message "Error: Does not work outside dired-mode")      ; can't work not in dired-mode
     (ding)))                                                 ; error sound
 
+(defun org-archive-done-or-canc-tasks ()
+  (interactive)
+  (org-map-entries
+   (lambda ()
+     (org-archive-subtree)
+     (setq org-map-continue-from (org-element-property :begin (org-element-at-point))))
+   "/DONE" 'tree)
+  (org-map-entries
+   (lambda ()
+     (org-archive-subtree)
+     (setq org-map-continue-from (org-element-property :begin (org-element-at-point))))
+   "/CANC" 'tree))
+
+(define-key org-mode-map (kbd "C-c M-4") 'org-archive-done-or-canc-tasks)
+
+;;   (defun ap/org-sort-entries-recursive (&optional key)
+;;     "Call `org-sort-entries' recursively on tree at point.
+;;   If KEY, use it; otherwise read key interactively."
+;;     (interactive)
+;;     (cl-macrolet ((moves-p (form)
+;; 			   `(let ((pos-before (point)))
+;; 			      ,form
+;; 			      (/= pos-before (point)))))
+;;       (cl-labels ((sort-tree
+;; 		   () (cl-loop do (when (children-p)
+;; 				    (save-excursion
+;; 				      (outline-next-heading)
+;; 				      (sort-tree))
+;; 				    (org-sort-entries nil key))
+;; 			       while (moves-p (org-forward-heading-same-level 1))))
+;; 		  (children-p (&optional invisible)
+;; 			      ;; Return non-nil if entry at point has child headings.
+;; 			      ;; Only children are considered, not other descendants.
+;; 			      ;; Code from `org-cycle-internal-local'.
+;; 			      (save-excursion
+;; 				(let ((level (funcall outline-level)))
+;; 				  (outline-next-heading)
+;; 				  (and (org-at-heading-p t)
+;; 				       (> (funcall outline-level) level))))))
+;; 	(save-excursion
+;; 	  (save-restriction
+;; 	    (widen)
+;; 	    (unless key
+;; 	      ;; HACK: Call the sort function just to get the key, then undo its changes.
+;; 	      (cl-letf* ((old-fn (symbol-function 'read-char-exclusive))
+;; 			 ((symbol-function 'read-char-exclusive)
+;; 			  (lambda (&rest args)
+;; 			    (setf key (apply #'funcall old-fn args)))))
+;; 		;; Sort the first heading and save the sort key.
+;; 		(org-sort-entries))
+;; 	      (undo-only))
+;; 	    (cond ((org-before-first-heading-p)
+;; 		   ;; Sort whole buffer. NOTE: This assumes the first heading is at level 1.
+;; 		   (org-sort-entries nil key)
+;; 		   (outline-next-heading)
+;; 		   (cl-loop do (sort-tree)
+;; 			    while (moves-p (org-forward-heading-same-level 1))))
+;; 		  ((org-at-heading-p)
+;; 		   ;; Sort this heading.
+;; 		   (sort-tree))
+;; 		  (t (user-error "Neither on a heading nor before first heading"))))))))
+
+;;   (defun ap/org-sort-entries-recursive-multi (&optional keys)
+;;     "Call `ap/org-sort-entries-recursive'.
+;;   If KEYS, call it for each of them; otherwise call interactively
+;;   until \\[keyboard-quit] is pressed."
+;;     (interactive)
+;;     (if keys
+;; 	(dolist (key keys)
+;; 	  (ap/org-sort-entries-recursive key))
+;;       (with-local-quit
+;; 	;; Not sure if `with-local-quit' is necessary, but probably a good
+;; 	;; idea in case of recursive edit.
+;; 	(cl-loop while (progn
+;; 			 (call-interactively #'ap/org-sort-entries-recursive)
+;; 			 t)))))
+
+
+;; (defun ap/org-sort-after-save ()
+;;   (interactive)
+;;   "Sort Org entries after saving the file."
+;;   (when (fboundp 'ap/org-sort-entries-recursive-multi)
+;;     (let ((olp (org-get-outline-path 'with-self))
+;; 	  (relative-pos (- (point) (save-excursion
+;; 				     (org-back-to-heading)
+;; 				     (point)))))
+;;       (goto-char (point-min))
+;;       (ap/org-sort-entries-recursive-multi
+;;        '(?p ?o))
+;;       (goto-char (org-find-olp olp 'this-buffer))
+;;       (forward-char relative-pos))))
+
+;; (add-hook 'before-save-hook #'ap/org-sort-after-save nil 'local)
+
 (setq holiday-islamic-holidays nil)
 (setq holiday-oriental-holidays nil)
 (setq holiday-bahai-holidays nil)
