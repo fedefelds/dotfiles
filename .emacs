@@ -272,13 +272,13 @@
 
 (setq org-habit-show-habits-only-for-today nil)
 
-(defun org-clock-todo-change ()
-  "Clock in/out when task state changes to/from ONGOING"
-  (if (string= org-state "ONGOING")
-      (org-clock-in)
-    (org-clock-out nil t)))
+;; (defun org-clock-todo-change ()
+;;   "Clock in/out when task state changes to/from ONGOING"
+;;   (if (string= org-state "ONGOING")
+;;       (org-clock-in)
+;;     (org-clock-out nil t)))
 
-(add-hook 'org-after-todo-state-change-hook 'org-clock-todo-change)
+;; (add-hook 'org-after-todo-state-change-hook 'org-clock-todo-change)
 
 (use-package org-edna
   :ensure t
