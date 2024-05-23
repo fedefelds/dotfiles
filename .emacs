@@ -738,10 +738,14 @@ This is intended to be used with org-redisplay-inline-images."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(all-the-icons async auctex calfw calfw-org company-box
-		   counsel-projectile doom-modeline
-		   evil-nerd-commenter forge helpful ivy-rich lsp-ivy
-		   lsp-treemacs lsp-ui org-bullets org-download
-		   org-edna org-roam-ui python-mode pyvenv
-		   rainbow-delimiters ssh-agency which-key xclip))
- '(safe-local-variable-values '((org-download-image-dir . "~/Documents/local_pictures"))))
+   '(all-the-icons async auctex calfw calfw-org company-box counsel-projectile doom-modeline evil-nerd-commenter forge helpful ivy-rich lsp-ivy lsp-treemacs lsp-ui org-bullets org-download org-edna org-roam-ui python-mode pyvenv rainbow-delimiters ssh-agency which-key xclip))
+ '(safe-local-variable-values
+   '((TeX-command-extra-options . "-shell-escape")
+     (org-download-image-dir . "~/Documents/local_pictures"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(put 'narrow-to-region 'disabled nil)
