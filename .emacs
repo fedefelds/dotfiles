@@ -188,46 +188,46 @@
                                  ("20231026232404-org_sdm.org" :maxlevel . 1))))
 
 ;; jump to top of the agenda after parsing
-(add-hook 'org-agenda-finalize-hook #'org-agenda-goto-today)
-  (setq org-agenda-custom-commands
-	    '(("g" "Get Things Done (GTD)"
-	       ((agenda "Agenda"
-			((org-agenda-span 3)
-			 (org-agenda-prefix-format "%t %s [%e] ")
-			 (org-agenda-overriding-header "AGENDA")))
-		(tags "+inbox"
-		    ((org-agenda-prefix-format "%t %s")
-		     (org-agenda-overriding-header "INBOX")))
-		(tags "/ONGOING"
-		      ((org-agenda-prefix-format "%t %s [%e] ")
-		       (org-agenda-overriding-header "ONGOING")))
-		(tags "/WAITING"
-		      ((org-agenda-prefix-format "%t %s [%e] ")
-		       (org-agenda-overriding-header "WAITING")))
-		(tags "@home/NEXT"
-		      ((org-agenda-prefix-format "%t %s [%e] ")
-		       (org-agenda-overriding-header "NEXT @home")))
-		(tags "@work/NEXT"
-		      ((org-agenda-prefix-format "%t %s [%e] ")
-		       (org-agenda-overriding-header "NEXT @work")))
-		(tags "@comp/NEXT"
-		      ((org-agenda-prefix-format "%t %s [%e] ")
-		       (org-agenda-overriding-header "NEXT @comp")))
-		(tags "@errands/NEXT"
-		    ((org-agenda-prefix-format "%t %s [%e] ")
-		     (org-agenda-overriding-header "NEXT @errands")))
-		(tags "@phone/NEXT"
-		    ((org-agenda-prefix-format "%t %s [%e] ")
-		     (org-agenda-overriding-header "NEXT @phone")))
-		(tags "@anywhere/NEXT"
-		    ((org-agenda-prefix-format "%t %s [%e] ")
-		     (org-agenda-overriding-header "NEXT @anywhere")))
-		 ;; (tags "project/NEXT"
-		 ;;       ((org-agenda-prefix-format "%t %s [%e] ")
-		 ;;        (org-agenda-overriding-header "NEXT project tasks")))
-		(tags "CLOSED>=\"<today>\"<-<tomorrow>"
+;;  (add-hook 'org-agenda-finalize-hook #'org-agenda-goto-today)
+    (setq org-agenda-custom-commands
+	      '(("g" "Get Things Done (GTD)"
+		 ((agenda "Agenda"
+			  ((org-agenda-span 1)
+			   (org-agenda-prefix-format "%t %s [%e] ")
+			   (org-agenda-overriding-header "AGENDA")))
+		  (tags "+inbox"
 		      ((org-agenda-prefix-format "%t %s")
-		       (org-agenda-overriding-header "Completed today")))))))
+		       (org-agenda-overriding-header "INBOX")))
+		  (tags "/ONGOING"
+			((org-agenda-prefix-format "%t %s [%e] ")
+			 (org-agenda-overriding-header "ONGOING")))
+		  (tags "/WAITING"
+			((org-agenda-prefix-format "%t %s [%e] ")
+			 (org-agenda-overriding-header "WAITING")))
+		  (tags "@home/NEXT"
+			((org-agenda-prefix-format "%t %s [%e] ")
+			 (org-agenda-overriding-header "NEXT @home")))
+		  (tags "@work/NEXT"
+			((org-agenda-prefix-format "%t %s [%e] ")
+			 (org-agenda-overriding-header "NEXT @work")))
+		  (tags "@comp/NEXT"
+			((org-agenda-prefix-format "%t %s [%e] ")
+			 (org-agenda-overriding-header "NEXT @comp")))
+		  (tags "@errands/NEXT"
+		      ((org-agenda-prefix-format "%t %s [%e] ")
+		       (org-agenda-overriding-header "NEXT @errands")))
+		  (tags "@phone/NEXT"
+		      ((org-agenda-prefix-format "%t %s [%e] ")
+		       (org-agenda-overriding-header "NEXT @phone")))
+		  (tags "@anywhere/NEXT"
+		      ((org-agenda-prefix-format "%t %s [%e] ")
+		       (org-agenda-overriding-header "NEXT @anywhere")))
+		   ;; (tags "project/NEXT"
+		   ;;       ((org-agenda-prefix-format "%t %s [%e] ")
+		   ;;        (org-agenda-overriding-header "NEXT project tasks")))
+		  (tags "CLOSED>=\"<today>\"<-<tomorrow>"
+			((org-agenda-prefix-format "%t %s")
+			 (org-agenda-overriding-header "Completed today")))))))
 
 (defun org-delegate ()
   "Delegate a task by setting status to WAITING and recording assignment details."
@@ -720,9 +720,6 @@ This is intended to be used with org-redisplay-inline-images."
     :ensure auctex)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-auctex t)
-
-(add-hook 'org-agenda-finalize-hook #'beginning-of-buffer)
-(add-hook 'org-agenda-finalize-hook #'org-agenda-goto-today)
 
 (setq test_var 150)
 
