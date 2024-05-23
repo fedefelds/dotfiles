@@ -136,6 +136,9 @@ else
     export EDITOR='emacs -nw -Q'
 fi
 
+#consolidate history 
+shopt -s histappend
+PROMPT_COMMAND='history -a'
 
 alias e='emacsclient -t'
 alias ec="nohup emacsclient -c --no-wait > /dev/null 2>&1"
