@@ -115,6 +115,8 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
 (require 'org)
     (setq org-catch-invisible-edits 1)
     (setq org-blank-before-new-entry '((heading) (plain-list-item)))
