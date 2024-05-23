@@ -143,8 +143,8 @@
     (setq org-global-properties
 	'(("Effort_ALL" . "0 5 10 15 30 45 60 90 120 999")))
 
-  ;; set org-deadline-warning-days to 0
-  (setq org-deadline-warning-days 6)
+  ;; set org-deadline-warning-days 
+  (setq org-deadline-warning-days 5)
 
 (setq org-directory "~/Documents/org/roam")
 
