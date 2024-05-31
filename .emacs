@@ -118,33 +118,33 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (require 'org)
-    (setq org-catch-invisible-edits 1)
-    (setq org-blank-before-new-entry '((heading) (plain-list-item)))
-    (setq org-startup-indented nil)
-;;    (setq org-log-done 'time)
-    (setq org-startup-indented nil)
+  (setq org-catch-invisible-edits 'show-and-error)
+  (setq org-blank-before-new-entry '((heading) (plain-list-item)))
+  (setq org-startup-indented nil)
+  (setq org-log-done 'note)
+  (setq org-startup-indented nil)
 
-    ;; define todo-keywords
-    (setq org-todo-keywords
-          '((sequence "NEXT(n)" "TODO(t!)" "WAITING(w!)" "ONGOING(o!)" "|" "DONE(d!)" "CANC(c!)")))
+  ;; define todo-keywords
+  (setq org-todo-keywords
+        '((sequence "NEXT(n)" "TODO(t!)" "WAITING(w@/!)" "ONGOING(o!)" "|" "DONE(d!)" "CANC(c@/!)")))
 
-    ;; define org contexts
-    (setq org-tag-alist '((:startgroup . nil)
-			("@home" . ?h)
-			("@work" . ?w)
-			("@comp" . ?c)
-			("@errands" . ?e)
-			("@phone" . ?p)
-			("@anywhere" . ?a)
-			(:grouptags . nil)
-			(:endgroup . nil)))
+  ;; define org contexts
+  (setq org-tag-alist '((:startgroup . nil)
+		      ("@home" . ?h)
+		      ("@work" . ?w)
+		      ("@comp" . ?c)
+		      ("@errands" . ?e)
+		      ("@phone" . ?p)
+		      ("@anywhere" . ?a)
+		      (:grouptags . nil)
+		      (:endgroup . nil)))
 
-  ;; global  #+PROPERTY: Effort_ALL 0 5 10 15 30 45 60 90 120 999
-    (setq org-global-properties
-	'(("Effort_ALL" . "0 5 10 15 30 45 60 90 120 999")))
+;; global  #+PROPERTY: Effort_ALL 0 5 10 15 30 45 60 90 120 999
+  (setq org-global-properties
+      '(("Effort_ALL" . "0 5 10 15 30 45 60 90 120 999")))
 
-  ;; set org-deadline-warning-days 
-  (setq org-deadline-warning-days 5)
+;; set org-deadline-warning-days 
+(setq org-deadline-warning-days 5)
 
 (setq org-directory "~/Documents/org/roam")
 
@@ -503,8 +503,7 @@ This is intended to be used with org-redisplay-inline-images."
 
 (defun my-calfw-org-agenda ()
   (interactive)
-  (let ((org-agenda-files '("20231026232223-org_inbox.org" "20231026231716-org_agenda.org"
-			       "20240307215416-org_projects.org" "20231026232404-org_sdm.org")))
+  (let ((org-agenda-files '("20231026231716-org_agenda.org" "20240307215416-org_projects.org")))
     (cfw:open-org-calendar)))
 
 (global-set-key (kbd "C-c o") 'my-calfw-org-agenda)
