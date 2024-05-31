@@ -136,6 +136,16 @@ else
     export EDITOR='emacs -nw -Q'
 fi
 
+#all terminals are tmux 
+if [[ -z "$TMUX" ]]; then
+    ID=$(/usr/bin/tmux ls | grep -vm1 attached | cut -d: -f1)
+    if [[ -z "${ID}" ]]; then
+        /usr/bin/tmux new-session
+    else
+        /usr/bin/tmux attach-session -t "${ID}"
+    fi
+fi
+
 #consolidate history 
 shopt -s histappend
 PROMPT_COMMAND='history -a'
