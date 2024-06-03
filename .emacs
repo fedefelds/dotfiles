@@ -147,9 +147,9 @@
 (setq org-deadline-warning-days 5)
 
 (setq org-directory "~/Documents/org/roam")
-
-(setq org-agenda-files (list "20231026232223-org_inbox.org" "20231026231716-org_agenda.org"
-                             "20240307215416-org_projects.org" "20231026232155-org_habits.org" "20231026232404-org_sdm.org"))
+(setq org-agenda-files '("~/Documents/org/roam"))  
+;; (setq org-agenda-files (list "20231026232223-org_inbox.org" "20231026231716-org_agenda.org"
+;;                              "20240307215416-org_projects.org" "20231026232155-org_habits.org" "20231026232404-org_sdm.org"))
 
 (setq org-capture-templates
         `(("i" "Inbox" entry (file "20231026232223-org_inbox.org")
