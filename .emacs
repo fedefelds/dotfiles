@@ -187,47 +187,70 @@
                                  ("20231026231716-org_agenda.org" :maxlevel . 1)
                                  ("20231026232404-org_sdm.org" :maxlevel . 1))))
 
-;; jump to top of the agenda after parsing
-;;  (add-hook 'org-agenda-finalize-hook #'org-agenda-goto-today)
-    (setq org-agenda-custom-commands
-	      '(("g" "Get Things Done (GTD)"
-		 ((agenda "Agenda"
-			  ((org-agenda-span 1)
-			   (org-agenda-prefix-format "%t %s [%e] ")
-			   (org-agenda-overriding-header "AGENDA")))
-		  (tags "+inbox"
-		      ((org-agenda-prefix-format "%t %s")
-		       (org-agenda-overriding-header "INBOX")))
-		  (tags "/ONGOING"
-			((org-agenda-prefix-format "%t %s [%e] ")
-			 (org-agenda-overriding-header "ONGOING")))
-		  (tags "/WAITING"
-			((org-agenda-prefix-format "%t %s [%e] ")
-			 (org-agenda-overriding-header "WAITING")))
-		  (tags "@home/NEXT"
-			((org-agenda-prefix-format "%t %s [%e] ")
-			 (org-agenda-overriding-header "NEXT @home")))
-		  (tags "@work/NEXT"
-			((org-agenda-prefix-format "%t %s [%e] ")
-			 (org-agenda-overriding-header "NEXT @work")))
-		  (tags "@comp/NEXT"
-			((org-agenda-prefix-format "%t %s [%e] ")
-			 (org-agenda-overriding-header "NEXT @comp")))
-		  (tags "@errands/NEXT"
-		      ((org-agenda-prefix-format "%t %s [%e] ")
-		       (org-agenda-overriding-header "NEXT @errands")))
-		  (tags "@phone/NEXT"
-		      ((org-agenda-prefix-format "%t %s [%e] ")
-		       (org-agenda-overriding-header "NEXT @phone")))
-		  (tags "@anywhere/NEXT"
-		      ((org-agenda-prefix-format "%t %s [%e] ")
-		       (org-agenda-overriding-header "NEXT @anywhere")))
-		   ;; (tags "project/NEXT"
-		   ;;       ((org-agenda-prefix-format "%t %s [%e] ")
-		   ;;        (org-agenda-overriding-header "NEXT project tasks")))
-		  (tags "CLOSED>=\"<today>\"<-<tomorrow>"
-			((org-agenda-prefix-format "%t %s")
-			 (org-agenda-overriding-header "Completed today")))))))
+(setq org-agenda-custom-commands
+      '(("g" "Get Things Done (GTD)"
+         ((agenda "Agenda"
+                  ((org-agenda-span 1)
+                   (org-agenda-prefix-format "%t %s [%e] ")
+                   (org-agenda-sorting-strategy
+                    '(time-up deadline-up priority-down))
+                   (org-agenda-overriding-header "AGENDA")))
+          (tags "+inbox"
+                ((org-agenda-prefix-format "%t %s")
+                 (org-agenda-sorting-strategy
+                  '(deadline-up priority-down))
+                 (org-agenda-overriding-header "INBOX")))
+          (tags "/ONGOING"
+                ((org-agenda-prefix-format "%t %s [%e] ")
+                 (org-agenda-sorting-strategy
+                  '(deadline-up priority-down))
+                 (org-agenda-overriding-header "ONGOING")))
+          (tags "/WAITING"
+                ((org-agenda-prefix-format "%t %s [%e] ")
+                 (org-agenda-sorting-strategy
+                  '(deadline-up priority-down))
+                 (org-agenda-overriding-header "WAITING")))
+          (tags "@home/NEXT"
+                ((org-agenda-prefix-format "%t %s [%e] ")
+                 (org-agenda-sorting-strategy
+                  '(deadline-up priority-down))
+                 (org-agenda-overriding-header "NEXT @home")))
+          (tags "@work/NEXT"
+                ((org-agenda-prefix-format "%t %s [%e] ")
+                 (org-agenda-sorting-strategy
+                  '(deadline-up priority-down))
+                 (org-agenda-overriding-header "NEXT @work")))
+          (tags "@comp/NEXT"
+                ((org-agenda-prefix-format "%t %s [%e] ")
+                 (org-agenda-sorting-strategy
+                  '(deadline-up priority-down))
+                 (org-agenda-overriding-header "NEXT @comp")))
+          (tags "@errands/NEXT"
+                ((org-agenda-prefix-format "%t %s [%e] ")
+                 (org-agenda-sorting-strategy
+                  '(deadline-up priority-down))
+                 (org-agenda-overriding-header "NEXT @errands")))
+          (tags "@phone/NEXT"
+                ((org-agenda-prefix-format "%t %s [%e] ")
+                 (org-agenda-sorting-strategy
+                  '(deadline-up priority-down))
+                 (org-agenda-overriding-header "NEXT @phone")))
+          (tags "@anywhere/NEXT"
+                ((org-agenda-prefix-format "%t %s [%e] ")
+                 (org-agenda-sorting-strategy
+                  '(deadline-up priority-down))
+                 (org-agenda-overriding-header "NEXT @anywhere")))
+          ;; Uncomment the following lines if you want to include project tasks
+          ;; (tags "project/NEXT"
+          ;;       ((org-agenda-prefix-format "%t %s [%e] ")
+          ;;        (org-agenda-sorting-strategy
+          ;;         '(deadline-up priority-down))
+          ;;        (org-agenda-overriding-header "NEXT project tasks")))
+          (tags "CLOSED>=\"<today>\"<-<tomorrow>"
+                ((org-agenda-prefix-format "%t %s")
+                 (org-agenda-sorting-strategy
+                  '(time-up))
+                 (org-agenda-overriding-header "Completed today")))))))
 
 (defun org-delegate ()
   "Delegate a task by setting status to WAITING and recording assignment details."
