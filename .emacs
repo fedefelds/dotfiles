@@ -126,7 +126,7 @@
 
   ;; define todo-keywords
   (setq org-todo-keywords
-        '((sequence "NEXT(n)" "TODO(t!)" "WAITING(w@/!)" "ONGOING(o!)" "|" "DONE(d!)" "CANC(c@/!)")))
+        '((sequence "NEXT(n)" "TODO(t!)" "WAIT(w@/!)" "ONGOING(o!)" "|" "DONE(d!)" "CNCL(c@/!)")))
 
   ;; define org contexts
   (setq org-tag-alist '((:startgroup . nil)
@@ -141,51 +141,52 @@
 
 ;; global  #+PROPERTY: Effort_ALL 0 5 10 15 30 45 60 90 120 999
   (setq org-global-properties
-      '(("Effort_ALL" . "0 5 10 15 30 45 60 90 120 999")))
+      '(("Effort_ALL" . "0 5 10 15 20 25 30 35 45 50 55 60 65 70 75 80 85 90 95 100 120 999")))
 
 ;; set org-deadline-warning-days 
 (setq org-deadline-warning-days 5)
 
-(setq org-directory "~/Documents/org/roam")
-(setq org-agenda-files '("~/Documents/org/roam"))  
+;; (setq org-directory "~/Documents/org/roam")
+;; (setq org-agenda-files '("~/Documents/org/roam")) 
 ;; (setq org-agenda-files (list "20231026232223-org_inbox.org" "20231026231716-org_agenda.org"
 ;;                              "20240307215416-org_projects.org" "20231026232155-org_habits.org" "20231026232404-org_sdm.org"))
 
 (setq org-capture-templates
-        `(("i" "Inbox" entry (file "20231026232223-org_inbox.org")
-           ,(concat "* TODO %?\n"
+	`(("i" "Inbox" entry (file "20231026232223-org_inbox.org")
+	   ,(concat "* TODO %?\n"
 ;;                    ":PROPERTIES:\n"
 ;;                    ":TRIGGER: next-sibling todo!(NEXT)\n"
 ;;                    ":END:\n"
-                    "/Entered on/ %U"))
-                    ("j" "Journal Entry"
-         entry (file+datetree "20231026232259-org_journal.org")
-         "* %?")
-          ("h" "@home task" entry (file+headline "20240307215416-org_projects.org" "single tasks @home")  "* TODO %?\n :PROPERTIES:\n :TAGS: @home\n :END:\n /Entered on/ %U")
-          ("w" "@work task" entry (file+headline "20240307215416-org_projects.org" "single tasks @work")  "* TODO %?\n :PROPERTIES:\n :TAGS: @work\n :END:\n /Entered on/ %U")
-          ("c" "@computer task" entry (file+headline "20240307215416-org_projects.org" "single tasks @computer")  "* TODO %?\n :PROPERTIES:\n :TAGS: @computer\n :END:\n /Entered on/ %U")
-          ("e" "@errands task" entry (file+headline "20240307215416-org_projects.org" "single tasks @errands")  "* TODO %?\n :PROPERTIES:\n :TAGS: @errands\n :END:\n /Entered on/ %U")
-          ("p" "@phone task" entry (file+headline "20240307215416-org_projects.org" "single tasks @phone")  "* TODO %?\n :PROPERTIES:\n :TAGS: @phone\n :END:\n /Entered on/ %U")
-          ))
+		    "/Entered on/ %U"))
+		    ("j" "Journal Entry"
+	 entry (file+datetree "20231026232259-org_journal.org")
+	 "* %?")
+	  ("h" "@home task" entry (file+headline "20240307215416-org_projects.org" "single tasks @home")  "* TODO %?\n :PROPERTIES:\n :TAGS: @home\n :END:\n /Entered on/ %U")
+	  ("w" "@work task" entry (file+headline "20240307215416-org_projects.org" "single tasks @work")  "* TODO %?\n :PROPERTIES:\n :TAGS: @work\n :END:\n /Entered on/ %U")
+	  ("c" "@computer task" entry (file+headline "20240307215416-org_projects.org" "single tasks @computer")  "* TODO %?\n :PROPERTIES:\n :TAGS: @computer\n :END:\n /Entered on/ %U")
+	  ("e" "@errands task" entry (file+headline "20240307215416-org_projects.org" "single tasks @errands")  "* TODO %?\n :PROPERTIES:\n :TAGS: @errands\n :END:\n /Entered on/ %U")
+	  ("p" "@phone task" entry (file+headline "20240307215416-org_projects.org" "single tasks @phone")  "* TODO %?\n :PROPERTIES:\n :TAGS: @phone\n :END:\n /Entered on/ %U")
+	  ))
 
-  (defun org-capture-inbox ()
-    (interactive)
-    (call-interactively 'org-store-link)
-    (org-capture nil "i"))
+  ;; (defun org-capture-inbox ()
+  ;;   (interactive)
+  ;;   (call-interactively 'org-store-link)
+  ;;   (org-capture nil "i"))
 
-  ;; use full window for org-capture
-  (add-hook 'org-capture-mode-hook 'delete-other-windows)
+  ;; ;; use full window for org-capture
+  ;; (add-hook 'org-capture-mode-hook 'delete-other-windows)
 
-  (define-key global-map (kbd "C-c a") 'org-agenda)
-  (define-key global-map (kbd "C-c c") 'org-capture)
-  (define-key global-map (kbd "C-c i") 'org-capture-inbox)
+  ;; (define-key global-map (kbd "C-c a") 'org-agenda)
+  ;; (define-key global-map (kbd "C-c c") 'org-capture)
+  ;; (define-key global-map (kbd "C-c i") 'org-capture-inbox)
 
 (setq org-refile-use-outline-path 'file)
  (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-allow-creating-parent-nodes t)
 (setq org-refile-targets (quote (("20240307215416-org_projects.org" :maxlevel . 1)
-                                 ("20231026231716-org_agenda.org" :maxlevel . 1)
-                                 ("20231026232404-org_sdm.org" :maxlevel . 1))))
+                                 ("20231026232223-org_inbox.org" :maxlevel . 1)
+				 ("20231026231716-org_agenda.org" :maxlevel . 1)
+				 ("20231026232404-org_sdm.org" :maxlevel . 1))))
 
 (setq org-agenda-custom-commands
       '(("g" "Get Things Done (GTD)"
@@ -205,67 +206,36 @@
                  (org-agenda-sorting-strategy
                   '(deadline-up priority-down))
                  (org-agenda-overriding-header "ONGOING")))
-          (tags "/WAITING"
+          (tags "/WAIT"
                 ((org-agenda-prefix-format "%t %s [%e] ")
                  (org-agenda-sorting-strategy
                   '(deadline-up priority-down))
-                 (org-agenda-overriding-header "WAITING")))
-          (tags "@home/NEXT"
+                 (org-agenda-overriding-header "WAIT")))
+          (tags "/NEXT"
                 ((org-agenda-prefix-format "%t %s [%e] ")
                  (org-agenda-sorting-strategy
                   '(deadline-up priority-down))
-                 (org-agenda-overriding-header "NEXT @home")))
-          (tags "@work/NEXT"
-                ((org-agenda-prefix-format "%t %s [%e] ")
-                 (org-agenda-sorting-strategy
-                  '(deadline-up priority-down))
-                 (org-agenda-overriding-header "NEXT @work")))
-          (tags "@comp/NEXT"
-                ((org-agenda-prefix-format "%t %s [%e] ")
-                 (org-agenda-sorting-strategy
-                  '(deadline-up priority-down))
-                 (org-agenda-overriding-header "NEXT @comp")))
-          (tags "@errands/NEXT"
-                ((org-agenda-prefix-format "%t %s [%e] ")
-                 (org-agenda-sorting-strategy
-                  '(deadline-up priority-down))
-                 (org-agenda-overriding-header "NEXT @errands")))
-          (tags "@phone/NEXT"
-                ((org-agenda-prefix-format "%t %s [%e] ")
-                 (org-agenda-sorting-strategy
-                  '(deadline-up priority-down))
-                 (org-agenda-overriding-header "NEXT @phone")))
-          (tags "@anywhere/NEXT"
-                ((org-agenda-prefix-format "%t %s [%e] ")
-                 (org-agenda-sorting-strategy
-                  '(deadline-up priority-down))
-                 (org-agenda-overriding-header "NEXT @anywhere")))
-          ;; Uncomment the following lines if you want to include project tasks
-          ;; (tags "project/NEXT"
-          ;;       ((org-agenda-prefix-format "%t %s [%e] ")
-          ;;        (org-agenda-sorting-strategy
-          ;;         '(deadline-up priority-down))
-          ;;        (org-agenda-overriding-header "NEXT project tasks")))
+                 (org-agenda-overriding-header "NEXT tasks")))
           (tags "CLOSED>=\"<today>\"<-<tomorrow>"
                 ((org-agenda-prefix-format "%t %s")
                  (org-agenda-sorting-strategy
                   '(time-up))
                  (org-agenda-overriding-header "Completed today")))))))
 
-(defun org-delegate ()
-  "Delegate a task by setting status to WAITING and recording assignment details."
-  (interactive)
-  (let ((task (nth 4 (org-heading-components)))
-        (assignee (read-string "Assignee: ")))
-    (if (not (string-empty-p task))
-        (progn
-          (org-entry-put nil "DELEGATED_TO" assignee)
-          (org-entry-put nil "DELEGATED_ON" (format-time-string "[%Y-%m-%d %H:%M]"))
-          (org-todo "WAITING")
-          (message "Task '%s' delegated to %s on %s" task assignee (format-time-string "%Y-%m-%d %H:%M")))
-      (message "Task name cannot be empty"))))
+;; (defun org-delegate ()
+;;   "Delegate a task by setting status to WAIT and recording assignment details."
+;;   (interactive)
+;;   (let ((task (nth 4 (org-heading-components)))
+;;         (assignee (read-string "Assignee: ")))
+;;     (if (not (string-empty-p task))
+;;         (progn
+;;           (org-entry-put nil "DELEGATED_TO" assignee)
+;;           (org-entry-put nil "DELEGATED_ON" (format-time-string "[%Y-%m-%d %H:%M]"))
+;;           (org-todo "WAIT")
+;;           (message "Task '%s' delegated to %s on %s" task assignee (format-time-string "%Y-%m-%d %H:%M")))
+;;       (message "Task name cannot be empty"))))
 
-(global-set-key (kbd "C-c d") 'org-delegate)
+;; (global-set-key (kbd "C-c d") 'org-delegate)
 
 (use-package org-fragtog
   :ensure t
@@ -346,7 +316,7 @@
   (let* ((roam-dir "~/Documents/org/roam/")
          (file-pattern "^[0-9]+-[a-z_]+\\.org$")
          (files (directory-files roam-dir t file-pattern))
-         (index-file (concat roam-dir "20231003135905-index.org"))
+         (index-file (concat roam-dir "20240613154726-index.org"))
          (clean-names '()))
     ;; Clean file names
     (dolist (filename files)
@@ -358,9 +328,9 @@
     ;; Generate index.org file
     (with-temp-file index-file
       (insert ":PROPERTIES:\n")
-      (insert ":ID:       63b47519-3495-4a15-b748-fb15d49f9209\n")
+      (insert ":ID:       6fd2d211-c8be-495f-b498-42cbfa191dc5\n")
       (insert ":END:\n")
-      (insert "#+TITLE: index\n")
+      (insert "#+TITLE: Index\n")
       (dolist (name clean-names)
         (let ((file (car (seq-filter (lambda (f) (string-match-p (concat "[0-9]+-" name "\\.org") f)) files))))
           (when file
@@ -510,6 +480,38 @@ This is intended to be used with org-redisplay-inline-images."
 ;;       (forward-char relative-pos))))
 
 ;; (add-hook 'before-save-hook #'ap/org-sort-after-save nil 'local)
+
+(use-package org-wild-notifier
+  :ensure t
+  :init (org-wild-notifier-mode 1)
+  :custom
+  (alert-default-style 'libnotify)
+  (org-wild-notifier-alert-time '(1 10 30))
+  ;; (org-wild-notifier-keywork-whitelist '("TODO" "NEXT"))
+  ;; (org-wild-notifier-keywork-whitelist nil)
+  (org-wild-notifier-notification-title "Org Reminder")
+  :config
+  (org-wild-notifier-mode 1))
+
+(use-package org-gtd
+:after org
+:demand t
+:custom
+(org-gtd-directory "~/Documents/org/gtd/")
+(org-agenda-files '("~/Documents/org/gtd"))
+(org-edna-use-inheritance t)
+(org-gtd-organize-hooks '(org-gtd-set-area-of-focus org-set-tags-command org-set-effort org-priority))
+(org-gtd-areas-of-focus '("Home" "Upskill" "Health" "Family" "Career"))
+(org-gtd-update-ack "3.0.0")
+(org-habit-graph-column 50)
+:config
+(org-edna-mode)
+:bind
+(("C-c d c" . org-gtd-capture)
+("C-c d e" . org-gtd-engage)
+("C-c d p" . org-gtd-process-inbox)
+:map org-gtd-clarify-map
+("C-c c" . org-gtd-organize)))
 
 (setq holiday-islamic-holidays nil)
 (setq holiday-oriental-holidays nil)
