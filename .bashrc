@@ -156,10 +156,28 @@ alias er='systemctl --user restart emacs'
 alias ll='ls -hrtl'
 alias la='ls -hrtla'
 alias gtypist='gtypist ~/git_repos/dotfiles/common_files/p.typ'
-alias mkeval='~/.scripts/mkeval.sh'
+alias nkdir='~/.scripts/nkdir.sh'
 alias ose='ssh -X i010750@srv-ose-01.ims.co.at'
 alias oet='ssh -X i010750@optics.et.ims.co.at'
 alias stowupdate='cd ~/git_repos/dotfiles && stow -t ~ . && echo "stow updated"'
 alias roam='cd ~/Documents/org/roam/'
 alias yt-dlp='~/.local/yt-dlp --write-sub --write-auto-sub --sub-lang "en.*"'
 alias ..='cd ..'
+alias intelsftp='sshpass -p +dG9YhKH^* sftp ims_imo_usr@esft.intel.com'
+alias oe5='. ~/sandbox/optics-env.5/load-optics-env.5.sh'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/i010750/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/i010750/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/i010750/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/i010750/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

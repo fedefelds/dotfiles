@@ -3,11 +3,11 @@
 current_date=$(date +%Y-%m-%d)
 
 # Read the description from the user input
-read -p "Enter tool & description (in11 mp8 dp): " description
+read -p "enter directory description: " description
 
 # Remove spaces and replace them with underscores
-formatted_description=$(echo "$description" | tr ' ' '_')
+formatted_description=$(echo "$description" | tr ' ' '-')
 
 # Create the directory with the formatted description
-mkdir "$current_date"_"$formatted_description"
-echo "Directory created: $current_date"_"$formatted_description"
+new_dir="$current_date"-"$formatted_description"
+mkdir $new_dir && echo "Directory created: " $new_dir 
