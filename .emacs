@@ -126,6 +126,8 @@ eshell-mode-hook))
 
 (setq org-todo-repeat-to-state "TODO")
 
+(define-key global-map (kbd "C-c C-x C-j") 'org-clock-goto)
+
 (use-package org-roam
   :ensure t
   :custom
