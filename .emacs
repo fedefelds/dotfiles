@@ -103,7 +103,7 @@ eshell-mode-hook))
 ;; (setq org-startup-indented t)
 
 (setq org-todo-keywords
-'((sequence "NEXT(n)" "TODO(t!)" "WAIT(w@/!)" "ONGOING(o!)" "|" "DONE(d!)" "CNCL(c@/!)")))
+'((sequence "NEXT(n)" "TODO(t!)" "WAIT(w!)" "ONGOING(o!)" "|" "DONE(d!)" "CNCL(c@/!)")))
 
 (setq org-tag-alist '((:startgroup . nil)
 ("@home" . ?h)
