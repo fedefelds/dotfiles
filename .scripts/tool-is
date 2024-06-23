@@ -1,0 +1,39 @@
+#!/bin/bash
+
+tool_dir=~/sandbox/optics_confidential/tool
+tool_od_dir=~/sandbox/optics_confidential/tool-od
+tool_dir=$(realpath $tool_dir)
+tool_od_dir=$(realpath $tool_od_dir)
+
+if [ "$#" -eq 1 ]; then
+	branch_name=$1
+
+	cd $tool_dir
+	git checkout "$branch_name"
+	git pull
+
+	cd $tool_od_dir
+	git checkout "$branch_name-ims"
+	git pull
+fi
+
+tool_branch=$(cd $tool_dir && git symbolic-ref -q HEAD)
+if [ $? -ne 0 ]; then
+	echo -e "\e[33mWARNING:\e[0m git working copy of tool repository does not exist: $tool_dir"
+else
+	tool_branch=${tool_branch##refs/heads/}
+	tool_branch=${tool_branch:-HEAD}
+fi
+
+tool_od_branch=$(cd $tool_od_dir && git symbolic-ref -q HEAD)
+if [ $? -ne 0 ]; then
+	echo -e "\e[33mWARNING:\e[0m git working copy of tool-od repository does not exist: $tool_od_dir"
+else
+	tool_od_branch=${tool_od_branch##refs/heads/}
+	tool_od_branch=${tool_od_branch:-HEAD}
+fi
+
+echo -e "  Current branch in TOOL:    \e[93m$tool_branch\e[0m" 
+echo -e "  Current branch in TOOL-OD: \e[93m$tool_od_branch\e[0m"
+
+cd ~
