@@ -347,7 +347,7 @@ eshell-mode-hook))
 	   '(movable-holiday (list 4 2 year)) "Dia de Malvinas")
 	  (holiday-fixed 5 1   "Dia del Trabajo") 
 	  (holiday-fixed 5 25  "Revolucion de Mayo") 
-	  (holiday-float 6 1 3 "Dia de la Bandera")
+	  (holiday-fixed 6 20 "Dia de la Bandera")
 	  (holiday-fixed 7 9   "Dia de la Independencia") 
 	  (holiday-float 8 1 3 "Dia de José de San Martín")
 	  (funcall 'holiday-sexp 
