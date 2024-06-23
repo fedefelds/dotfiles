@@ -83,3 +83,4 @@ package.json
 .config/VirtualBox/xpti.dat
 .config/btop/
 .config/zoom*
+/..emacs.~undo-tree~
