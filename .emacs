@@ -197,8 +197,10 @@ eshell-mode-hook))
 (org-gtd-areas-of-focus '("Home" "Upskill" "Health" "Family" "Career"))
 (org-gtd-update-ack "3.0.0")
 (org-habit-graph-column 50)
+(org-gtd-engage-prefix-width 30)
 :config
 (org-gtd-mode)
+(add-hook 'org-agenda-mode-hook 'hl-line-mode)
 :bind
 (("C-c d c" . org-gtd-capture)
 ("C-c d e" . org-gtd-engage)
