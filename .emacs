@@ -84,7 +84,7 @@ eshell-mode-hook))
 	   ("C-d" . ivy-reverse-i-search-kill))
     :init
     (ivy-mode 1)
-    ;; (setq ivy-initial-inputs-alist nil)
+    (setq ivy-initial-inputs-alist nil)
     (setq ivy-use-selectable-prompt t))
 
 (use-package counsel
