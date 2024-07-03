@@ -399,7 +399,7 @@ eshell-mode-hook))
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(all-the-icons async auctex calfw calfw-org company-box counsel-projectile doom-modeline evil-nerd-commenter forge helpful ivy-rich lsp-ivy lsp-treemacs lsp-ui org-bullets org-download org-edna org-roam-ui python-mode pyvenv rainbow-delimiters ssh-agency which-key xclip))
+   '(conda all-the-icons async auctex calfw calfw-org company-box counsel-projectile doom-modeline evil-nerd-commenter forge helpful ivy-rich lsp-ivy lsp-treemacs lsp-ui org-bullets org-download org-edna org-roam-ui python-mode pyvenv rainbow-delimiters ssh-agency which-key xclip))
  '(safe-local-variable-values
    '((TeX-command-extra-options . "-shell-escape")
      (org-download-image-dir . "~/Documents/local_pictures"))))
