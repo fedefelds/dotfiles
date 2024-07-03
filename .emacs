@@ -1,3 +1,5 @@
+(scroll-bar-mode -1)
+
 ;; Initialize package sources
 (require 'package)
 
