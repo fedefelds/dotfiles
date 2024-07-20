@@ -197,6 +197,7 @@ eshell-mode-hook))
 :config
 (org-gtd-mode)
 (add-hook 'org-agenda-mode-hook 'hl-line-mode)
+(add-hook 'org-mode-hook 'org-indent-mode)
 :bind
 (("C-c d c" . org-gtd-capture)
 ("C-c d e" . org-gtd-engage)
