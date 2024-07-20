@@ -61,13 +61,6 @@ eshell-mode-hook))
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(use-package undo-tree
-:ensure t
-:init
-(global-undo-tree-mode)
-;; (setq undo-tree-auto-save-history t)	;
-(global-set-key (kbd "C-x u") 'undo-tree-visualize))
-
 (use-package ivy
     :diminish
     :bind (("C-s" . swiper)
