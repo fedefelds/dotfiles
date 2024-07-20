@@ -444,3 +444,10 @@ eshell-mode-hook))
   (setq-default org-download-image-dir "~/Documents/org/roam/pictures")
   :bind ("C-c s" . org-download-screenshot))
 
+(defun efs/org-mode-visual-fill ()
+   (setq visual-fill-column-width 100
+         visual-fill-column-center-text t)
+   (visual-fill-column-mode 1))
+
+ (use-package visual-fill-column
+   :hook (org-mode . efs/org-mode-visual-fill))
