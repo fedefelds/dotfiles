@@ -49,7 +49,8 @@ eshell-mode-hook))
 ;; Bind this function to a key combination, e.g., C-c h
 (global-set-key (kbd "C-c h") 'set-default-font-height)
 
-(load-theme 'manoj-dark t)
+;; (load-theme 'manoj-dark t)
+(load-theme 'tango t)
 
 (use-package helpful
 :config
