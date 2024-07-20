@@ -437,3 +437,10 @@ eshell-mode-hook))
   (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
   (setq conda-env-home-directory (expand-file-name "~/miniconda3")))
 
+(use-package org-download
+  :config
+  (setq org-download-screenshot-method "gnome-screenshot -a -f %s")
+  (setq org-download-method 'directory)
+  (setq-default org-download-image-dir "~/Documents/org/roam/pictures")
+  :bind ("C-c s" . org-download-screenshot))
+
