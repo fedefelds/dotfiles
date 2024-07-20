@@ -119,7 +119,7 @@ eshell-mode-hook))
 (:endgroup . nil)))
 
 (setq org-global-properties
-'(("Effort_ALL" . "0 1 2 3 4 5 10 15 20 25 30 35 45 50 55 60 65 70 75 80 85 90 95 100 120 999")))
+'(("Effort_ALL" . "5 10 20 30 40 50 60 100 120 999")))
 
 (setq org-startup-folded 'fold)
 
