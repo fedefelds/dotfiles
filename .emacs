@@ -183,7 +183,7 @@ eshell-mode-hook))
 	   org-roam-ui-update-on-save t
 	   org-roam-ui-open-on-start nil))
 
-(use-package org-gtd
+(use-package org-gtd			;
 :after org
 :demand t
 :custom
@@ -204,6 +204,25 @@ eshell-mode-hook))
 ("C-c d p" . org-gtd-process-inbox)
 :map org-gtd-clarify-map
 ("C-c c" . org-gtd-organize)))
+
+(defun org-gtd-set-context-hook ()
+  "Set context for GTD items unless they are project tasks or trash."
+  (unless (org-gtd-organize-type-member-p '(project-task trash))
+    (org-set-tags-command)))
+
+(defun org-gtd-set-effort-hook ()
+  "Set effort for GTD items unless they are a quick action, knowledge or trash."
+  (unless (org-gtd-organize-type-member-p '(quick-action knowledge trash))
+    (org-set-effort)))
+
+(defun org-gtd-set-priority-hook ()
+  "Set priority for GTD items unless they are a quick action, knowledge or trash."
+  (unless (org-gtd-organize-type-member-p '(quick-action knowledge trash))
+    (org-priority)))  
+
+(setq org-gtd-organize-hooks '(org-gtd-set-area-of-focus
+ org-gtd-set-context-hook org-gtd-set-effort-hook
+ org-gtd-set-priority-hook))
 
 (use-package org-wild-notifier
   :ensure t
