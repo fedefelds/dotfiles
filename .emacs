@@ -124,6 +124,9 @@ eshell-mode-hook))
 
 (define-key global-map (kbd "C-c C-x C-j") 'org-clock-goto)
 
+(setq image-auto-resize t)
+(setq org-image-actual-width '(500))
+
 (use-package org-roam
   :ensure t
   :custom
