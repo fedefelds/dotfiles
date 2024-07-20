@@ -451,3 +451,5 @@ eshell-mode-hook))
 
  (use-package visual-fill-column
    :hook (org-mode . efs/org-mode-visual-fill))
+
+(tool-bar-mode -1)
