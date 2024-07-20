@@ -156,7 +156,6 @@ alias er='systemctl --user restart emacs'
 alias ll='ls -hrtl'
 alias la='ls -hrtla'
 alias gtypist='gtypist ~/git_repos/dotfiles/common_files/p.typ'
-alias nkdir='~/.scripts/nkdir.sh'
 alias ose='ssh -X i010750@srv-ose-01.ims.co.at'
 alias oet='ssh -X i010750@optics.et.ims.co.at'
 alias stowupdate='cd ~/git_repos/dotfiles && stow -t ~ . && echo "stow updated"'
@@ -167,6 +166,7 @@ alias ..='cd ..'
 alias intelsftp='sshpass -p +dG9YhKH^* sftp ims_imo_usr@esft.intel.com'
 alias oe5='. ~/sandbox/optics-env.5/load-optics-env.5.sh'
 alias tool-is='~/git_repos/dotfiles/.scripts/tool-is'
+alias isomkdir='~/.scripts/isomkdir.sh'
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/i010750/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
