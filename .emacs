@@ -430,3 +430,10 @@ eshell-mode-hook))
 (use-package xclip
   :config
   (xclip-mode 1))
+
+(use-package conda
+  :ensure t
+  :init
+  (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
+  (setq conda-env-home-directory (expand-file-name "~/miniconda3")))
+
