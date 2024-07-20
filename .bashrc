@@ -166,6 +166,7 @@ alias ..='cd ..'
 alias intelsftp='sshpass -p +dG9YhKH^* sftp ims_imo_usr@esft.intel.com'
 alias oe5='. ~/sandbox/optics-env.5/load-optics-env.5.sh'
 alias tool-is='~/git_repos/dotfiles/.scripts/tool-is'
+alias mangrep='~/.scripts/mangrep'
 alias isomkdir='~/.scripts/isomkdir.sh'
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

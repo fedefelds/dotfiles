@@ -1,0 +1,5 @@
+#!/bin/bash
+echo -n Password: 
+read -s password
+echo
+pdfgrep  --password=$password -ri "$1" ~/git_repos/topdoc-releases/tool_operator_manuals_calcsheets/
