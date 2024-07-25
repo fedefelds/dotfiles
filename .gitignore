@@ -84,3 +84,4 @@ package.json
 .config/btop/
 .config/zoom*
 /..emacs.~undo-tree~
+.scripts/.packages/*
