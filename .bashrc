@@ -170,7 +170,9 @@ alias mangrep='~/.scripts/mangrep'
 alias refgrep='~/.scripts/refgrep.sh'
 alias gtgrep='~/.scripts/gtgrep.sh'
 alias isoname='echo "Enter description:"; read desc; echo "extension"; read ext; echo $(date -I)-$(echo $desc | tr " " -).$ext | tr -d "\n" | xclip -selection clipboard; echo "copied to clipboard!"'
+alias isomv='~/.scripts/isomv.sh'
 alias isomkdir='~/.scripts/isomkdir.sh'
+alias cdw='cd ~/Documents/work'
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/i010750/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
