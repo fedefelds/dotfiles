@@ -193,7 +193,7 @@ eshell-mode-hook))
 (org-edna-use-inheritance t)
 (org-gtd-areas-of-focus '("Home" "Upskill" "Health" "Family" "Career"))
 (org-gtd-update-ack "3.0.0")
-(org-habit-graph-column 50)
+(org-habit-graph-column 70)
 (org-gtd-engage-prefix-width 30)
 :config
 (org-gtd-mode)
