@@ -3,6 +3,14 @@ echo "Enter description:";
 read desc;
 echo "extension";
 read ext;
-new_name=$(echo $(date -I)-$(echo $desc | tr " " -).$ext | tr -d "\n")
+if [ -z "$extension" ]; then
+#    echo "The variable 'extension' is empty."
+    new_name=$(echo $(date +%Y%m%d)-$(echo $desc | tr " " - | tr a-z A-Z) | tr -d "\n")
+else
+#    echo "The variable 'extension' is not empty."
+    new_name=$(echo $(date +%Y%m%d)-$(echo $desc | tr " " - | tr a-z A-Z).$ext | tr -d "\n")
+fi
+
+
 mv $1 $new_name
 echo $new_name | xclip -selection clipboard; echo "filename copied to clipboard!"
