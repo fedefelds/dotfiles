@@ -8,6 +8,6 @@ while true; do
     if [ -z "$line" ]; then
         break
     fi
-    printf "* $line \n[$(date '+%Y-%m-%d %a %H:%M')]\n" | tee -a ~/Documents/org/gtd/inbox.org
+    printf "* $line \n[$(date '+%Y-%m-%d %a %H:%M')]\n" | tee -a ~/Documents/org/roam/inbox.org
     echo                                                                                           
 done

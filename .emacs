@@ -187,8 +187,8 @@ eshell-mode-hook))
 :after org
 :demand t
 :custom
-(org-gtd-directory "~/Documents/org/gtd")
-(org-agenda-files '("~/Documents/org/gtd"))
+(org-gtd-directory "~/Documents/org/roam")
+(org-agenda-files '("~/Documents/org/roam"))
 (org-edna-use-inheritance t)
 (org-gtd-areas-of-focus '("Home" "Upskill" "Health" "Family" "Career"))
 (org-gtd-update-ack "3.0.0")
