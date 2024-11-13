@@ -3,10 +3,10 @@
 current_date=$(date +%Y%m%d)
 
 # Remove spaces and replace them with underscores
-formatted_description=$(echo "$@" | tr ' ' '-' | tr a-z A-Z)
+formatted_description=$(echo "$@" | tr ' ' '_' | tr a-z A-Z)
 
 #combine date & formatted description
-dirname="$current_date"-"$formatted_description"
+dirname="$current_date"_"$formatted_description"
 
 #create directory & paste name to clipboard
 mkdir $dirname && echo "$dirname" | xclip -selection clipboard

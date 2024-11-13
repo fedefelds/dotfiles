@@ -49,9 +49,9 @@ eshell-mode-hook))
 ;; Bind this function to a key combination, e.g., C-c h
 (global-set-key (kbd "C-c h") 'set-default-font-height)
 
-(load-theme 'wombat t)
+;;(load-theme 'wombat t)
 
-(setq org-hide '((t (:foreground "black"))))
+(setq org-hide '((t (:foreground "grey"))))
 
 (use-package helpful
 :config
@@ -225,17 +225,17 @@ eshell-mode-hook))
  org-gtd-set-context-hook org-gtd-set-effort-hook
  org-gtd-set-priority-hook))
 
-(use-package org-wild-notifier
-  :ensure t
-  :init (org-wild-notifier-mode 1)
-  :custom
-  (alert-default-style 'libnotify)
-  (org-wild-notifier-alert-time '(1 10 30))
-  ;; (org-wild-notifier-keywork-whitelist '("TODO" "NEXT"))
-  ;; (org-wild-notifier-keywork-whitelist nil)
-  (org-wild-notifier-notification-title "Org Reminder")
-  :config
-  (org-wild-notifier-mode 1))
+;; (use-package org-wild-notifier
+;;   :ensure t
+;;   :init (org-wild-notifier-mode 1)
+;;   :custom
+;;   (alert-default-style 'libnotify)
+;;   (org-wild-notifier-alert-time '(1 10 30))
+;;   ;; (org-wild-notifier-keywork-whitelist '("TODO" "NEXT"))
+;;   ;; (org-wild-notifier-keywork-whitelist nil)
+;;   (org-wild-notifier-notification-title "Org Reminder")
+;;   :config
+;;   (org-wild-notifier-mode 1))
 
 (setq org-habit-show-habits-only-for-today nil)
 
@@ -416,7 +416,7 @@ eshell-mode-hook))
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(conda all-the-icons async auctex calfw calfw-org company-box counsel-projectile doom-modeline evil-nerd-commenter forge helpful ivy-rich lsp-ivy lsp-treemacs lsp-ui org-bullets org-download org-edna org-roam-ui python-mode pyvenv rainbow-delimiters ssh-agency which-key xclip))
+   '(all-the-icons async auctex calfw calfw-org company-box counsel-projectile doom-modeline evil-nerd-commenter forge helpful ivy-rich lsp-ivy lsp-treemacs lsp-ui org-bullets org-download org-edna org-roam-ui python-mode pyvenv rainbow-delimiters ssh-agency which-key xclip))
  '(safe-local-variable-values
    '((TeX-command-extra-options . "-shell-escape")
      (org-download-image-dir . "~/Documents/local_pictures"))))
@@ -454,3 +454,8 @@ eshell-mode-hook))
    :hook (org-mode . efs/org-mode-visual-fill))
 
 (tool-bar-mode -1)
+
+(org-link-set-parameters
+ "shell"
+ :follow (lambda (path)
+           (shell-command-to-string path)))
