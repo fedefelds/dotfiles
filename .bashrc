@@ -136,8 +136,8 @@ else
     export EDITOR='emacs -nw -Q'
 fi
 
-#all terminals are tmux 
-if [[ -z "$TMUX" ]]; then
+# All terminals start tmux, except VS Code terminals
+if [[ -z "$TMUX" && "$TERM_PROGRAM" != "vscode" ]]; then
     ID=$(/usr/bin/tmux ls | grep -vm1 attached | cut -d: -f1)
     if [[ -z "${ID}" ]]; then
         /usr/bin/tmux new-session
@@ -181,8 +181,10 @@ alias cdw='cd ~/Documents/work'
 alias cdm='cd ~/Documents/work/metro_today/'
 alias cdp='cd ~/Documents/work/plots/'
 alias clip='xclip -selection clipboard'
-alias fan_off='echo level auto | tee /proc/acpi/ibm/fan'
-alias fan_on='echo level 5 | tee /proc/acpi/ibm/fan'
+alias fan-off='echo level auto | sudo tee /proc/acpi/ibm/fan'
+alias fan-on='echo level 5 | sudo tee /proc/acpi/ibm/fan'
+alias maly-show='find -iname *.maly -exec ~/.local/nebv/nebv {} + '
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/i010750/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
