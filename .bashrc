@@ -157,14 +157,14 @@ alias ek='killall emacs'
 alias ll='ls -hrtl'
 alias la='ls -hrtla'
 alias gtypist='gtypist ~/git_repos/dotfiles/common_files/p.typ'
-alias ose='ssh -X i010750@srv-ose-01.ims.co.at'
-alias oet='ssh -X i010750@optics.et.ims.co.at'
+
 alias stowupdate='cd ~/git_repos/dotfiles && stow -t ~ . && echo "stow updated"'
 alias roam='cd ~/Documents/org/roam/'
 alias yt-dlp='~/.local/yt-dlp/yt-dlp --write-sub --write-auto-sub --sub-lang "en.*"'
 alias nebv='~/.local/nebv/nebv'
 alias ..='cd ..'
 alias intelsftp='sshpass -p +dG9YhKH^* sftp ims_imo_usr@esft.intel.com'
+alias dnpsftp='sshpass -p OqjdU28o94hs!=Zm sftp sftp_dnp@sftp2.ims.co.at'
 alias oe5='. ~/sandbox/optics-env.5/load-optics-env.5.sh'
 alias dac='conda activate DACenv'
 alias tool-is='~/git_repos/dotfiles/.scripts/tool-is'
@@ -184,18 +184,60 @@ alias clip='xclip -selection clipboard'
 alias fan-off='echo level auto | sudo tee /proc/acpi/ibm/fan'
 alias fan-on='echo level 5 | sudo tee /proc/acpi/ibm/fan'
 alias maly-show='find -iname *.maly -exec ~/.local/nebv/nebv {} + '
+alias ose='ssh -X i010750@srv-ose-01.ims.co.at'
+alias oet='ssh -X i010750@optics.et.ims.co.at'
+alias btt='ssh ims@control-pc.btt.ims.co.at'
+#alias potb1='ssh ims@control-pc.potb1.ims.co.at'
+alias potb2='ssh operator@control-pc.potb2.ims.co.at'
+alias potb3='ssh ims@control-pc.potb3.ims.co.at'
+alias potb4='ssh ims@control-pc.potb4.ims.co.at'
+alias potb5='ssh ims@control-pc.potb5.ims.co.at'
+alias mount-potb5-clfs='sshfs clfs-potb5:/ remote-home/'
+
+export TOOLCONFIG=~/sandbox/optics_confidential/tool
+export TOOLODCONFIG=~/sandbox/optics_confidential/tool-od
+export CFLIGHT=/opt/cFlight
+export PYTHONPATH=$CFLIGHT/pkgs:$PYTHONPATH
+export PATH=$CFLIGHT/bin:$PATH
+
+export TROM2=/opt/tromsim2
+export PATH=$TROM2/bin:$PATH
+export PYTHONPATH=$TROM2/pkgs:$PYTHONPATH
+
+export XDOW=/home/i010750/Downloads/useful/career/raytracing/ip/gold/xdow/xdow
+export PYTHONPATH=$XDOW/pkgs:$PYTHONPATH
+export PATH=$XDOW/bin:$PATH
+
+
+findregex() {
+    if [ -z "$1" ]; then
+        echo "Usage: findregex '<regex_pattern>'"
+        echo "Examples:"
+        echo "  findregex '.*(SAT|EVAL).*'       # Files containing 'SAT' or 'EVAL'"
+        echo "  findregex './REPORT_.*\\.txt'    # Files starting with 'REPORT_' and ending in .txt"
+        echo "  findregex '.*TEST.*FINAL.*'      # Files with 'TEST' before 'FINAL'"
+        echo "  findregex '.*[0-9]{8}.*'         # Files with exactly 8 digits (e.g., a date like 20240401)"
+        return 1
+    fi
+
+    echo find . -regextype posix-egrep -regex "$1"
+    find . -regextype posix-egrep -regex "$1"
+}
+
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/$USER/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/i010750/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/$USER/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/$USER/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/i010750/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/i010750/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/$USER/miniconda3/bin:$PATH"
+        export PATH="/home/i010750/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
+# <<< conda initialize <<<
 
